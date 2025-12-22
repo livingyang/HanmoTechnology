@@ -3,6 +3,7 @@
 import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
+import crypto from "crypto";
 
 // 从命令行中，获取插件目录
 const pluginPath = process.argv[2];
@@ -32,7 +33,8 @@ function pluginFolderToZip(pluginPath: string, version: string) {
   console.log("zipFilePath:", zipFilePath);
 
   // 生成密码
-  const password = `snw@${version}`;
+  const hash = crypto.createHash("md5").update(pluginName).digest("hex");
+  const password = `${hash.substring(0, 6)}@${version}`;
 
   // 替换uplugin文件中的Version字符串
   const updatedPluginContent = pluginContent.replace("5.0.0", version);
