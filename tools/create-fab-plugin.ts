@@ -24,6 +24,9 @@ console.log("pluginName:", pluginName);
 const pluginFilePath = path.join(pluginPath, `${pluginName}.uplugin`);
 console.log("pluginFilePath:", pluginFilePath);
 
+const usePassword = false;
+console.log("usePassword:", usePassword);
+
 // 将uplugin文件的内容保存起来
 const pluginContent = fs.readFileSync(pluginFilePath, "utf8");
 
@@ -32,21 +35,27 @@ function pluginFolderToZip(pluginPath: string, version: string) {
   const zipFilePath = path.join(".", `${pluginName}-${version}.zip`);
   console.log("zipFilePath:", zipFilePath);
 
-  // 生成密码
-  const hash = crypto.createHash("md5").update(pluginName).digest("hex");
-  const password = `${hash.substring(0, 6)}@${version}`;
-
   // 替换uplugin文件中的Version字符串
   const updatedPluginContent = pluginContent.replace("5.0.0", version);
   // 保存更新后的uplugin文件
   fs.writeFileSync(pluginFilePath, updatedPluginContent);
 
   // 执行7zip命令
-  const zipCommand = `"${zipPath}" a -tzip -p"${password}" ${zipFilePath} ${pluginPath}/*`;
-  console.log("zipCommand:", zipCommand);
-  console.log("password:", password);
-  // 执行7zip命令，添加密码
-  execSync(`${zipCommand}`);
+  if (usePassword) {
+  // 生成密码
+    const hash = crypto.createHash("md5").update(pluginName).digest("hex");
+    const password = `${hash.substring(0, 6)}@${version}`;
+    const zipCommand = `"${zipPath}" a -tzip -p"${password}" ${zipFilePath} ${pluginPath}/*`;
+    console.log("zipCommand:", zipCommand);
+    console.log("password:", password);
+    // 执行7zip命令，添加密码
+    execSync(`${zipCommand}`);
+  } else {
+    const zipCommand = `"${zipPath}" a -tzip ${zipFilePath} ${pluginPath}/*`;
+    console.log("zipCommand:", zipCommand);
+    // 执行7zip命令，添加密码
+    execSync(`${zipCommand}`);
+  }
 }
 
 // 调用函数，将插件目录打包成zip包
