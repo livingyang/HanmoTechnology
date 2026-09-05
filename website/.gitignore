@@ -1,0 +1,8 @@
+# Build output
+dist/
+
+# Vue TSC incremental cache
+*.tsbuildinfo
+
+# Vite cache
+.vite/

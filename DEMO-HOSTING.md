@@ -123,33 +123,38 @@ done
 
 ```json
 {
-  "version": "1.0",
-  "updatedAt": "2026-09-05",
+  "schemaVersion": "3.0",
   "products": [
     {
       "slug": "HanmoIdleMMO",
       "name": "汉末放置 MMO",
       "nameEn": "Hanmo Idle MMO",
       "tagline": "放置类 MMO 单机版",
-      "version": "0.0.3",
+      "entry": "demos/HanmoIdleMMO/",
+      "thumbnail": "demos/HanmoIdleMMO/thumbnail.svg",
+      "version": "0.0.1",
       "status": "alpha",
       "tags": ["idle", "mmo", "vue3"],
-      "thumbnail": "demos/HanmoIdleMMO/thumbnail.svg",
-      "entry": "demos/HanmoIdleMMO/",
+      "category": "game",
       "embeddable": true,
       "sandbox": "allow-scripts allow-same-origin",
       "homepage": "https://github.com/livingyang/HanmoIdleMMO",
-      "updatedAt": "2026-09-05"
+      "addedAt": "2026-09-05",
+      "order": 10
     }
   ]
 }
 ```
 
 字段说明：
-- `entry`：相对 Hub 仓库根的产物路径（页面渲染时拼成 `${BASE_URL}${entry}index.html`）
-- `thumbnail`：相对路径，指向产品自带的缩略图
+- `schemaVersion`：注册表自身格式版本，固定 `"3.0"`
+- `entry`：产物入口目录，**相对 Hub 根的完整路径**（结尾带斜杠），如 `demos/HanmoIdleMMO/`；页面渲染时拼成 `${BASE_URL}${entry}`
+- `thumbnail`：缩略图**相对 Hub 根的完整路径**，如 `demos/HanmoIdleMMO/thumbnail.svg`（不要只填文件名，否则页面拼出 `demos/<slug>/<文件名>` 会 404）
+- `version`：产品版本号，与 `demos/<slug>/manifest.json` 一致
+- `category`：`game` / `tool` / `demo`
+- `order`：排序权重，数字小者靠前
 - 一次性多个产品：`products` 数组加多个对象即可
-- 主页发布日更新 `updatedAt` 字段
+- 注册表更新日可加顶层 `updatedAt` 字段（可选）
 
 AI 操作：编辑 $HUB/products.json，给 `products` 数组追加新条目；如果 slug 已存在则整体替换（更新 version/updatedAt/其他字段）。
 

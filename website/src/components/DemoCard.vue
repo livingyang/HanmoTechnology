@@ -20,7 +20,7 @@ function toggleEmbed() {
     <div class="demo-thumb-wrap">
       <img
         v-if="!embed && !imgError"
-        :src="demoThumbSrc(props.product.slug, props.product.thumbnail)"
+        :src="demoThumbSrc(props.product.thumbnail)"
         :alt="props.product.name"
         class="demo-thumb"
         @error="imgError = true"
@@ -31,7 +31,7 @@ function toggleEmbed() {
 
       <iframe
         v-if="embed && props.product.embeddable"
-        :src="demoSrc(props.product.slug)"
+        :src="demoSrc(props.product.entry)"
         :sandbox="props.product.sandbox || 'allow-scripts allow-same-origin allow-popups allow-forms'"
         class="demo-embed"
         loading="lazy"
@@ -62,7 +62,7 @@ function toggleEmbed() {
         </button>
         <a
           class="btn btn-secondary"
-          :href="demoSrc(props.product.slug)"
+          :href="demoSrc(props.product.entry)"
           target="_blank"
           rel="noopener"
         >

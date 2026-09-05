@@ -25,9 +25,9 @@ export interface ProductEntry {
   tags?: string[]
   /** 分类：game / tool / demo */
   category?: 'game' | 'tool' | 'demo'
-  /** manifest.json 在 demos/ 下的入口路径 */
+  /** 产物入口目录（相对 Hub 根的完整路径，结尾带斜杠），如 demos/HanmoIdleMMO/ */
   entry: string
-  /** 缩略图文件名（相对 entry 路径） */
+  /** 缩略图完整路径（相对 Hub 根），如 demos/HanmoIdleMMO/thumbnail.svg */
   thumbnail: string
   /** 版本（semver） */
   version: string
@@ -41,6 +41,10 @@ export interface ProductEntry {
   homepage?: string
   /** 排序权重（数字小者靠前） */
   order?: number
+  /** 注册日期 */
+  addedAt?: string
+  /** 最近更新日期 */
+  updatedAt?: string
 }
 
 export interface ProductsRegistry {
@@ -53,15 +57,15 @@ export const products: ProductEntry[] = (productsJson as ProductsRegistry).produ
   .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
 
 /**
- * 计算 demo iframe 的绝对 src（指向 HanmoTechnology/demos/<slug>/）
+ * 计算 demo iframe 的绝对 src（entry 已是完整路径 demos/<slug>/）
  */
-export function demoSrc(slug: string): string {
-  return `${import.meta.env.BASE_URL}demos/${slug}/`
+export function demoSrc(entry: string): string {
+  return `${import.meta.env.BASE_URL}${entry}`
 }
 
 /**
- * 计算 demo 缩略图的绝对 src
+ * 计算 demo 缩略图的绝对 src（thumbnail 已是完整路径 demos/<slug>/xxx.svg）
  */
-export function demoThumbSrc(slug: string, thumbnail: string): string {
-  return `${import.meta.env.BASE_URL}demos/${slug}/${thumbnail}`
+export function demoThumbSrc(thumbnail: string): string {
+  return `${import.meta.env.BASE_URL}${thumbnail}`
 }

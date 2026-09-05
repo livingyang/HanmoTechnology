@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
+const baseUrl = import.meta.env.BASE_URL
+
 const open = ref(false)
 const scrolled = ref(false)
 
@@ -44,7 +46,7 @@ function go(id: string) {
   <header class="navbar" :class="{ 'navbar-scrolled': scrolled }">
     <div class="container navbar-inner">
       <a href="#hero" class="navbar-brand" @click.prevent="go('hero')">
-        <img src="../../../public/favicon.svg" alt="Hanmo" class="logo" />
+        <img :src="`${baseUrl}favicon.svg`" alt="Hanmo" class="logo" />
         <span class="brand-cn">汉末科技</span>
         <span class="brand-en">Hanmo</span>
       </a>
