@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "HanmoIdleMMO",
+    "name": "汉末放置 MMO",
+    "nameEn": "Hanmo Idle MMO",
+    "tagline": "放置类 MMO 单机版",
+    "thumbnail": "demos/HanmoIdleMMO/thumbnail.svg",
+    "entry": "demos/HanmoIdleMMO/",
+    "tags": ["idle", "mmo", "vue3", "放置"],
+    "category": "game",
+    "status": "alpha",
+    "version": "0.0.2",
+    "embeddable": true,
+    "addedAt": "2026-09-05",
+    "order": 10,
+    "note": "v3.0 接入；首次 publish-demo.yml 跑通后此条生效"
+  }
+]

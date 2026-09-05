@@ -1,0 +1,14 @@
+# demos/ 标记为 vendored，避免 GitHub 语言统计误把 HTML/JS 算进项目语言
+demos/** linguist-vendored
+
+# 保持产物 LF 行尾，避免 Windows 环境下混合行尾
+demos/** text=auto eol=lf
+
+# 大型占位/资源文件标记为二进制
+demos/**/*.png binary
+demos/**/*.jpg binary
+demos/**/*.jpeg binary
+demos/**/*.webp binary
+demos/**/*.woff binary
+demos/**/*.woff2 binary
+demos/**/*.ttf binary
