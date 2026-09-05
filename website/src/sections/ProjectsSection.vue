@@ -35,11 +35,6 @@ import ProductCard from '../components/ProductCard.vue'
           href: '#play',
           external: false,
         }"
-        :secondary-link="{
-          label: '查看源码',
-          href: 'https://github.com/livingyang/HanmoIdleMMO',
-          external: true,
-        }"
       />
     </div>
   </SectionTitle>

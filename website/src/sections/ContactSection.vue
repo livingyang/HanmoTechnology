@@ -15,12 +15,6 @@ const contacts: ContactItem[] = [
     href: 'mailto:hanmotech@agent.qq.com',
   },
   {
-    label: 'GITHUB',
-    value: 'github.com/livingyang',
-    href: 'https://github.com/livingyang',
-    external: true,
-  },
-  {
     label: 'COMPANY SITE',
     value: 'livingyang.github.io/HanmoTechnology',
     href: '#hero',

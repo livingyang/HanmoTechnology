@@ -1,17 +1,17 @@
 /**
  * products 数据源
  *
- * 来源：仓库根的 products.json（注册表），由 Hub 仓库 owner 维护。
+ * 来源：仓库根的 products.json（注册表），由 Hub owner 维护。
  * 此处采用构建时静态 import —— 比 fetch 更适合静态站点，
  * 首屏即拿到数据、无跨域、无 hydration 抖动。
  *
- * 对应规范：HanmoTechnology/DEMO-HOSTING.md v3.0
+ * 对应规范：DEMO-HOSTING.md
  */
 
 import productsJson from '../../../products.json'
 
 export interface ProductEntry {
-  /** slug：与 GitHub 仓库同名 */
+  /** slug：产品英文 ID */
   slug: string
   /** 中文显示名 */
   name: string
@@ -37,8 +37,6 @@ export interface ProductEntry {
   embeddable?: boolean
   /** iframe sandbox */
   sandbox?: string
-  /** 仓库 URL */
-  homepage?: string
   /** 排序权重（数字小者靠前） */
   order?: number
   /** 注册日期 */
@@ -57,7 +55,7 @@ export const products: ProductEntry[] = (productsJson as ProductsRegistry).produ
   .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
 
 /**
- * 计算 demo iframe 的绝对 src（entry 已是完整路径 demos/<slug>/）
+ * 计算 demo 的绝对 src（entry 已是完整路径 demos/<slug>/）
  */
 export function demoSrc(entry: string): string {
   return `${import.meta.env.BASE_URL}${entry}`

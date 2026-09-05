@@ -14,7 +14,6 @@
       "version": "0.0.1",
       "embeddable": true,
       "sandbox": "allow-scripts allow-same-origin",
-      "homepage": "https://github.com/livingyang/HanmoIdleMMO",
       "addedAt": "2026-09-05",
       "order": 10
     }

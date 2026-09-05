@@ -17,11 +17,6 @@ import ProductCard from '../components/ProductCard.vue'
           href: 'https://www.fab.com/listings/xxxx',
           external: true,
         }"
-        :secondary-link="{
-          label: '查看源码',
-          href: 'https://github.com/livingyang/SmartNavigationWidget',
-          external: true,
-        }"
       />
 
       <ProductCard
