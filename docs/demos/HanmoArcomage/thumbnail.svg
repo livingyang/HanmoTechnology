@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 288" role="img" aria-label="汉末牌塔">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14101c"/>
+      <stop offset="1" stop-color="#1e1830"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9a7b2e"/>
+      <stop offset="0.5" stop-color="#e8c378"/>
+      <stop offset="1" stop-color="#9a7b2e"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2438"/>
+      <stop offset="1" stop-color="#1a1525"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="288" fill="url(#bg)"/>
+
+  <!-- 内框 -->
+  <rect x="14" y="14" width="484" height="260" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.7"/>
+  <rect x="22" y="22" width="468" height="244" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.35"/>
+
+  <!-- 角饰 -->
+  <g fill="url(#gold)" opacity="0.9">
+    <path d="M 24 24 L 56 24 L 56 28 L 28 28 L 28 56 L 24 56 Z"/>
+    <path d="M 488 24 L 456 24 L 456 28 L 484 28 L 484 56 L 488 56 Z"/>
+    <path d="M 24 264 L 56 264 L 56 260 L 28 260 L 28 232 L 24 232 Z"/>
+    <path d="M 488 264 L 456 264 L 456 260 L 484 260 L 484 232 L 488 232 Z"/>
+  </g>
+
+  <!-- 三张扇形卡牌（中、左、右） -->
+  <g transform="translate(256 152)">
+    <!-- 左卡 -->
+    <g transform="rotate(-14) translate(-52 8)">
+      <rect x="-37" y="-62" width="74" height="108" rx="6" fill="url(#card)" stroke="url(#gold)" stroke-width="1.5" opacity="0.85"/>
+      <rect x="-30" y="-55" width="60" height="94" rx="3" fill="none" stroke="#5a4d2e" stroke-width="0.8" opacity="0.5"/>
+      <text x="0" y="-32" text-anchor="middle" font-family="serif" font-size="20" fill="url(#gold)" opacity="0.8">♣</text>
+    </g>
+    <!-- 右卡 -->
+    <g transform="rotate(14) translate(52 8)">
+      <rect x="-37" y="-62" width="74" height="108" rx="6" fill="url(#card)" stroke="url(#gold)" stroke-width="1.5" opacity="0.85"/>
+      <rect x="-30" y="-55" width="60" height="94" rx="3" fill="none" stroke="#5a4d2e" stroke-width="0.8" opacity="0.5"/>
+      <text x="0" y="-32" text-anchor="middle" font-family="serif" font-size="20" fill="url(#gold)" opacity="0.8">♠</text>
+    </g>
+    <!-- 中卡（最大） -->
+    <g>
+      <rect x="-42" y="-72" width="84" height="124" rx="7" fill="url(#card)" stroke="url(#gold)" stroke-width="2"/>
+      <rect x="-34" y="-64" width="68" height="108" rx="4" fill="none" stroke="#6a5a36" stroke-width="1" opacity="0.6"/>
+      <text x="0" y="-38" text-anchor="middle" font-family="serif" font-size="26" fill="url(#gold)">♥</text>
+      <text x="0" y="8" text-anchor="middle" font-family="serif" font-size="16" fill="#c9a55e" opacity="0.7" letter-spacing="2">TOWER</text>
+      <line x1="-24" y1="20" x2="24" y2="20" stroke="url(#gold)" stroke-width="0.8" opacity="0.5"/>
+      <text x="0" y="40" text-anchor="middle" font-family="serif" font-size="12" fill="#8a7544" opacity="0.6">01</text>
+    </g>
+  </g>
+
+  <!-- 顶部小字 -->
+  <text x="256" y="72" text-anchor="middle" font-family="serif" font-size="13" fill="url(#gold)" letter-spacing="6" opacity="0.85">CARD · ROGUELIKE · 单机版</text>
+
+  <!-- 主标题 -->
+  <text x="256" y="258" text-anchor="middle" font-family="serif" font-size="30" fill="url(#gold)" font-weight="700" letter-spacing="6">汉末牌塔</text>
+
+  <!-- 版本号 -->
+  <text x="256" y="278" text-anchor="middle" font-family="monospace" font-size="10" fill="#7a6b44" letter-spacing="3">v0.1.0 · alpha</text>
+</svg>

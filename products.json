@@ -16,6 +16,23 @@
       "sandbox": "allow-scripts allow-same-origin",
       "addedAt": "2026-09-05",
       "order": 10
+    },
+    {
+      "slug": "HanmoArcomage",
+      "name": "汉墨牌塔",
+      "nameEn": "Hanmo Card Tower",
+      "tagline": "Roguelike 卡牌爬塔单机版",
+      "entry": "demos/HanmoArcomage/",
+      "thumbnail": "demos/HanmoArcomage/thumbnail.svg",
+      "tags": ["card", "roguelike", "vue3", "playcanvas", "卡牌"],
+      "category": "game",
+      "status": "alpha",
+      "version": "0.1.0",
+      "embeddable": true,
+      "sandbox": "allow-scripts allow-same-origin",
+      "homepage": "https://github.com/livingyang/HanmoArcomage",
+      "addedAt": "2026-09-05",
+      "order": 20
     }
   ]
 }
