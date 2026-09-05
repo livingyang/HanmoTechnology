@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "3.0",
+  "slug": "HanmoIdleMMO",
+  "name": "汉末放置 MMO",
+  "nameEn": "Hanmo Idle MMO",
+  "tagline": "放置类 MMO 单机版",
+  "thumbnail": "thumbnail.svg",
+  "version": "0.0.1",
+  "status": "alpha",
+  "tags": ["idle", "mmo", "vue3", "放置"],
+  "homepage": "https://github.com/livingyang/HanmoIdleMMO",
+  "embeddable": true,
+  "sandbox": "allow-scripts allow-same-origin",
+  "entry": "index.html",
+  "updatedAt": "2026-09-05"
+}
