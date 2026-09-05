@@ -13,7 +13,7 @@ const year = new Date().getFullYear()
           GitHub
         </a>
         ·
-        <a href="mailto:lhm.cold@163.com">lhm.cold@163.com</a>
+        <a href="mailto:hanmotech@agent.qq.com">hanmotech@agent.qq.com</a>
       </div>
     </div>
   </footer>

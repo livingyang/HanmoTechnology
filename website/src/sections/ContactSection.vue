@@ -11,8 +11,8 @@ interface ContactItem {
 const contacts: ContactItem[] = [
   {
     label: 'EMAIL',
-    value: 'lhm.cold@163.com',
-    href: 'mailto:lhm.cold@163.com',
+    value: 'hanmotech@agent.qq.com',
+    href: 'mailto:hanmotech@agent.qq.com',
   },
   {
     label: 'GITHUB',
