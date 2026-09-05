@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-// Hanmo Technology Hub · demos/manifest.json 校验脚本
+// Hanmo Technology Hub · docs/demos/manifest.json 校验脚本
 // 用法：node tools/validate-manifests.mjs
 //
 // 规则：
-//  - 扫描 demos/<slug>/manifest.json
+//  - 扫描 docs/demos/<slug>/manifest.json
 //  - 必填字段：schemaVersion, slug, name, nameEn, tagline, thumbnail, version, status, entry
 //  - schemaVersion 推荐 3.0；其他版本给 warning，不阻塞
 //  - slug 字段必须等于目录名
 //  - status 必须是 alpha/beta/released/archived
 //  - thumbnail 文件必须存在
 //  - entry 文件必须存在
-// 失败 → exit 1，阻塞 Pages 部署。
+// 失败 → exit 1，阻塞本地构建产物提交（commit 时跑一次即可）。
 
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
@@ -23,10 +23,10 @@ const SUPPORTED_STATUS = ['alpha', 'beta', 'released', 'archived'];
 const RECOMMENDED_SCHEMA_VERSION = '3.0';
 
 const root = process.cwd();
-const demosDir = join(root, 'demos');
+const demosDir = join(root, 'docs', 'demos');
 
 if (!existsSync(demosDir)) {
-  console.log('[skip] no demos/ directory in this repo');
+  console.log('[skip] no docs/demos/ directory in this repo');
   process.exit(0);
 }
 
@@ -40,12 +40,12 @@ try {
     }
   });
 } catch (e) {
-  console.error(`[FATAL] cannot read demos/: ${e.message}`);
-  process.exit(1);
-}
+    console.error(`[FATAL] cannot read docs/demos/: ${e.message}`);
+    process.exit(1);
+  }
 
 if (slugs.length === 0) {
-  console.log('[skip] demos/ is empty');
+  console.log('[skip] docs/demos/ is empty');
   process.exit(0);
 }
 
@@ -128,7 +128,7 @@ console.log(`  errors:   ${errors}`);
 console.log(`  warnings: ${warnings}`);
 
 if (errors > 0) {
-  console.error(`\n✗ 校验失败，阻塞 Pages 部署`);
+  console.error(`\n✗ 校验失败，请修复后再提交`);
   process.exit(1);
 } else {
   console.log(`\n✓ 全部通过`);
