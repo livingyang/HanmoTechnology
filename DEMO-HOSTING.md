@@ -133,8 +133,8 @@ done
       "name": "汉末放置 MMO",
       "nameEn": "Hanmo Idle MMO",
       "tagline": "放置类 MMO 单机版",
-      "entry": "docs/demos/HanmoIdleMMO/",
-      "thumbnail": "docs/demos/HanmoIdleMMO/thumbnail.svg",
+      "entry": "demos/HanmoIdleMMO/",
+      "thumbnail": "demos/HanmoIdleMMO/thumbnail.svg",
       "version": "0.0.1",
       "status": "alpha",
       "tags": ["idle", "mmo", "vue3"],
@@ -151,8 +151,8 @@ done
 
 字段说明：
 - `schemaVersion`：注册表自身格式版本，固定 `"3.0"`
-- `entry`：产物入口目录，**相对 Hub 根的完整路径**（结尾带斜杠），如 `docs/demos/HanmoIdleMMO/`；页面渲染时拼成 `${BASE_URL}${entry}`
-- `thumbnail`：缩略图**相对 Hub 根的完整路径**，如 `docs/demos/HanmoIdleMMO/thumbnail.svg`
+- `entry`：产物入口；**URL 路径（不含 `docs/` 前缀）**，结尾带斜杠，如 `demos/HanmoIdleMMO/`。⚠️ 物理文件在 `docs/demos/<slug>/`，但 GitHub Pages 把 `docs/` 当站点根，所以 URL 里的路径**从 `demos/` 开始**，不要写 `docs/demos/...`（否则主页拼出 `/HanmoTechnology/docs/demos/` 会 404）。页面渲染时拼成 `${BASE_URL}${entry}`
+- `thumbnail`：缩略图 URL 路径（**同样不含 `docs/` 前缀**），如 `demos/HanmoIdleMMO/thumbnail.svg`
 - `version`：产品版本号，与 `docs/demos/<slug>/manifest.json` 一致
 - `category`：`game` / `tool` / `demo`
 - `order`：排序权重，数字小者靠前

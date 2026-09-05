@@ -4,7 +4,7 @@
 
 - **仓库**：github.com/livingyang/HanmoTechnology（公开，仅 main 分支）
 - **Pages**：GitHub Pages 项目站点，默认域 `livingyang.github.io/HanmoTechnology/`，HTTPS 已开
-- **当前 Pages 源**：Deploy from a branch → `main` / `/docs`（计划改为 GitHub Actions）
+- **当前 Pages 源**：Deploy from a branch → `main` / `/docs`（GitHub 内置 Branch 部署，无 Action 工作流）
 
 ## 公司信息（权威数据源：`COMPANY.md`）
 
@@ -27,42 +27,44 @@
 
 ## 进行中：仓库 → 公司主页
 
-- ✅ Vue 3 + Vite + TS + GitHub Actions（已落地）
-- ✅ website/ 工程已搭好（22 个文件，含 6 个 section、products.json 集成、iframe 嵌入）
-- ✅ npm install + npm run build 实测通过（vue-tsc + vite v6.4.3，产出 76KB JS + 8.5KB CSS）
-- ✅ 本地 2 个 commit 已就绪（212f5df + 7ae5497，ahead of origin/main by 2）
-- ✅ DEMO-HOSTING v3.1 已落地（v3.0 的 publish-demo.sh 已废弃）
-- ✅ Hub `.github/workflows/pages.yml`：校验 demos/ → 构建 website/（`npm ci` + `npm run build`）→ 一次性 Pages 部署
-- 待执行：用户手动 `git push origin main` → 切 Pages Source 到 **GitHub Actions** → 验证线上
+- ✅ Vue 3 + Vite + TS（已落地，website/ 22 文件，6 个 section + iframe 嵌入）
+- ✅ 主页构建实测通过（vue-tsc + vite v6.4.3，76KB JS + 8.5KB CSS）
+- ✅ DEMO-HOSTING v4.0（v3.1 的 Actions 路线被废，回归到本地构建 + Pages 内置部署）
+- ✅ HanmoIdleMMO v0.0.1 已并入 `docs/demos/HanmoIdleMMO/`（git 自动识别 rename，43 个文件保留历史）
+- ✅ v4.0 重构已 commit（`45d696b`，ahead of origin/main by 1，未 push）
+- ✅ `.github/workflows/pages.yml` 已删除（不再维护 Actions 工作流）
+- 待执行：用户手动 `git push origin main` → GitHub Pages 自动 Branch 部署 → 验证线上
 
-## Web 试玩产品托管（DEMO-HOSTING v3.1）
+## Web 试玩产品托管（DEMO-HOSTING v4.0）
 
-- 规范文件：`HanmoTechnology/DEMO-HOSTING.md`（v3.1，替代 v3.0 的 publish-demo.sh 方案）
-- 注册表：`HanmoTechnology/products.json`（用户手维护或 AI 编辑）
-- **产品仓零侵入原则**（用户明确要求）：产品仓**不写任何 manifest.json / thumbnail.svg / publish-demo.yml**，build 出 `dist-web/` 即可；所有 Hub 接入相关文件只在 Hub 仓里
-- 拓扑（v3.1，已废弃 v1.0 各产品自带 Pages、v2.0 zip 中转、v3.0 AI agent publish-demo 脚本）：
+> **v4.0 = v3.1 拓扑 + 合并到 docs/ + 去 Actions**。中间产物与发布根收口到 `docs/` 单一目录。
+
+- 规范文件：`HanmoTechnology/DEMO-HOSTING.md`（v4.0，已重写）
+- 注册表：`HanmoTechnology/products.json`（路径含 `docs/`，用户手维护或 AI 编辑）
+- **产品仓零侵入原则**：产品仓**不写任何 manifest.json / thumbnail.svg / publish-demo.yml**，build 出 `dist-web/` 即可；所有 Hub 接入相关文件只在 Hub 仓里
+- 拓扑（v4.0，已废弃 v1.0 各产品自带 Pages、v2.0 zip 中转、v3.0 publish-demo.sh、v3.1 Actions 工作流）：
   - 用户工作空间切到产品仓（HanmoXxx）
-  - 用户告诉 AI Hub 仓本地路径，AI 读 DEMO-HOSTING.md
-  - AI 在产品仓 build 出 `dist-web/`
-  - AI 跨仓 cd 到 Hub 仓 `cp -r` 到 `demos/<slug>/`
-  - AI 编辑 Hub 仓的 `products.json`
-  - 用户手动 `git add + commit + push` Hub 仓
-  - Hub `pages.yml` 自动部署（demos/ + website/）
-- 路径：`https://livingyang.github.io/HanmoTechnology/demos/<slug>/`
-- 体积阈值：单产品 ≤ 100MB 完美；100-200MB 可接受；>200MB 不入库（pages.yml 部署时校验）
-- Hub 校验脚本：`tools/validate-manifests.mjs`，部署前扫所有 `demos/*/manifest.json`，缺字段阻塞部署
-- manifest schema：v3.0，必填字段在 DEMO-HOSTING.md §3
+  - 用户告诉 AI Hub 仓本地路径，AI 读 DEMO-HOSTING.md §4.1~§4.3
+  - AI 在产品仓 build 出 `dist-web/`，再跨仓 `cp -r` 到 Hub 的 `docs/demos/<slug>/`
+  - AI 编辑 Hub 仓的 `products.json`（路径含 `docs/`）
+  - **AI 在 Hub 仓再 build 主页**：`cd website && npm run build` → `cp -r website/dist/. ../docs/`
+  - 用户手动 `git add docs/ + commit + push` Hub 仓
+  - GitHub Pages 内置 Branch 部署（无需 Actions）
+- 路径：`https://livingyang.github.io/HanmoTechnology/demos/<slug>/`（物理位置在 `docs/demos/<slug>/`）
+- 体积阈值：单产品 ≤ 100MB 完美；100-200MB 可接受；>200MB 不入库
+- Hub 校验脚本：`tools/validate-manifests.mjs`，commit 前手动跑扫 `docs/demos/*/manifest.json`，缺字段 exit 1
+- manifest schema：v3.0（不变）
 - **状态机**：独立开发者 demo 场景下所有产品 `status` 统一填 `alpha`；不要做 alpha/beta/released 多版本切换（用户明确否决，理由是 demo 仅展示个人能力）
-- 当前已注册产品：**HanmoIdleMMO（v0.0.1, alpha, 542KB, 7ae5497 已首次提交）**
+- 当前已注册产品：**HanmoIdleMMO（v0.0.1, alpha, 542KB，已并入 docs/demos/）**
 - `HanmoSekiro` 是 UE5 本地项目，**未规划 Web 版**，不要加进注册表
 
 ## website 构建踩过的坑（重要！下次少走弯路）
 
 - **`website/tsconfig.json` 的 `include` 必须含 `env.d.ts`**，否则 vite/client 类型不注入，`import.meta.env` 报 TS2339
 - **`public/` 资源用 `${import.meta.env.BASE_URL}<filename>`**，不要 `import` 也不要相对路径
-- **`website/.gitignore` 必须有**（`dist/`、`*.tsbuildinfo`、`.vite/`），否则 build 产物会污染仓库
-- **`package-lock.json` 必须 commit**（pages.yml 用 `npm ci`，没 lockfile 会装到不同版本）
+- **`website/.gitignore` 必须有**（`dist/`、`*.tsbuildinfo`、`.vite/`）；**`dist/` 始终不入库**——它是中间产物，`cp` 到 `docs/` 才是入库的发布根
 - **多行 commit message 用 `git commit -F file` + here-doc**，别在 `git commit -m "..."` 双引号里塞 `\n`（Windows bash 转义陷阱，字面 `\n` 会被写入 commit message）
+- **YAML 工作流文件不能用 build 通过来推断合法**——pages.yml 那次本地 build 通过但 Pages 红，是因为 YAML 缩进错。改完任何工作流 / YAML 都用解析器（`python -c "import yaml; yaml.safe_load(...)"`）跑一遍
 
 ## 用户偏好（值得记住）
 
