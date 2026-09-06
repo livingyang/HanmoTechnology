@@ -62,26 +62,64 @@ base: '/HanmoTechnology/demos/<slug>/'
 
 ## 3. manifest.json schema（v3.0）
 
-`dist-web/manifest.json` 必需字段：
+`docs/demos/<slug>/manifest.json` 是 demo 产物的元数据描述文件，由 validate 脚本校验。
+
+字段分三类。`tools/validate-manifests.mjs` 的校验规则跟下表 1:1 对齐。
+
+### 3.1 必填字段（9 个，缺一即失败）
+
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `schemaVersion` | string | manifest schema 版本号，**当前固定填 `"3.0"`**；其他版本给 warning |
+| `slug` | string | **必须等于 `docs/demos/` 下的目录名**（如 `HanmoIdleMMO`），不一致即失败 |
+| `name` | string | 中文展示名（如 `"汉末放置 MMO"`）。Hub 主页 `/play` 卡片读这个 |
+| `nameEn` | string | 英文展示名（用于 URL / 日志 / 兼容性） |
+| `tagline` | string | 一句话简介 |
+| `thumbnail` | string | 缩略图文件名（**相对 demo 产物目录**），如 `"thumbnail.svg"`；文件必须存在 |
+| `version` | string | 语义化版本号，如 `"0.1.0"` |
+| `status` | string | 必须是 `alpha` / `beta` / `released` / `archived` 之一。**独立开发者 demo 站统一填 `alpha`**，不做多版本切换 |
+| `entry` | string | 入口 HTML 文件名（**相对 demo 产物目录**），如 `"index.html"`；文件必须存在 |
+
+### 3.2 可选字段（5 个）
+
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `tags` | string[] | 标签数组（筛选/展示用），如 `["idle", "vue3"]` |
+| `updatedAt` | string | 此次更新日期，`YYYY-MM-DD`；与 `products.json` 顶层同名字段独立维护 |
+| `embeddable` | boolean | 是否可被主页 iframe 内嵌。**当前 DemoCard 改为新窗口打开后已不消费**，可省略 |
+| `sandbox` | string | iframe sandbox 字符串。**同上，已不消费**，可省略 |
+| `description` | string | 较 `tagline` 更长的描述（暂未在主页展示） |
+
+> 旧 manifest 里残留的 `embeddable` / `sandbox` 暂不清（向后兼容，新 demo 不再需要）。Hub 维护 `products.json` 时也不用再写这两个字段。
+
+### 3.3 禁止字段（出现即 warning，违反"主页禁源码"规则）
+
+| 字段 | 原因 |
+|---|---|
+| `homepage` | 主页对外已禁止任何源码/仓库入口（commit `95114d8`）。manifest 是随 demo 上线的公开文件，若含 `homepage` 可能在未来被读出来泄露仓库 URL。**所有 demo 的 manifest 必须去掉这个字段** |
+| `repository` / `repo` / `source` / `code` | 同上，任何指向产品仓代码位置的字段都禁止；产品仓地址是内部工作流信息，不应对外 |
+
+### 3.4 字段示例（最小可用）
 
 ```json
 {
   "schemaVersion": "3.0",
-  "slug": "HanmoIdleMMO",                  // 必须等于 Hub docs/demos/ 下的目录名
-  "name": "汉末放置 MMO",                   // 中文名（展示用）
-  "nameEn": "Hanmo Idle MMO",              // 英文名（URL/日志用）
-  "tagline": "放置类 MMO 单机版",           // 一句话简介
-  "version": "0.0.3",                       // 语义化版本号
-  "status": "alpha",                       // demo 场景默认填 alpha
-  "tags": ["idle", "mmo", "vue3"],         // 用于筛选（可选）
-  "homepage": "https://github.com/livingyang/HanmoIdleMMO",  // 产品仓 URL
-  "embeddable": true,                      // true 主页会内嵌 iframe
-  "sandbox": "allow-scripts allow-same-origin",  // iframe sandbox
-  "updatedAt": "2026-09-05"                // 此次更新日期
+  "slug": "HanmoIdleMMO",
+  "name": "汉末放置 MMO",
+  "nameEn": "Hanmo Idle MMO",
+  "tagline": "放置类 MMO 单机版",
+  "thumbnail": "thumbnail.svg",
+  "version": "0.0.1",
+  "status": "alpha",
+  "tags": ["idle", "mmo", "vue3"],
+  "updatedAt": "2026-09-05"
 }
 ```
 
-`status` 在 demo 展示场景下统一填 `alpha`，不需要做 alpha/beta/release 多版本切换。
+### 3.5 历史字段备注
+
+- 早期 manifest 曾含 `embeddable` / `sandbox`（用于当时 iframe 内嵌）。DemoCard 改新窗口打开后业务已不消费。
+- 早期 manifest 含 `homepage`（产品仓 URL）。**这是 v3.0 schema 禁止字段的来源——已记入 §3.3**，必须去掉。
 
 ---
 
@@ -139,9 +177,8 @@ done
       "status": "alpha",
       "tags": ["idle", "mmo", "vue3"],
       "category": "game",
-      "embeddable": true,
-      "sandbox": "allow-scripts allow-same-origin",
-      "homepage": "https://github.com/livingyang/HanmoIdleMMO",
+      "version": "0.0.1",
+      "status": "alpha",
       "addedAt": "2026-09-05",
       "order": 10
     }
@@ -158,6 +195,9 @@ done
 - `order`：排序权重，数字小者靠前
 - 一次性多个产品：`products` 数组加多个对象即可
 - 注册表更新日可加顶层 `updatedAt` 字段（可选）
+
+**禁止字段**（与 §3.3 manifest 同源）：
+- `homepage` / `repository` / `repo` 等指向产品仓代码位置的字段一律不要写。Hub 主页对外已禁止任何源码入口（commit `95114d8`），`products.json` 与 manifest 同样不允许出现这些字段。即使业务层当前不读，留着也是冗余+潜在信息暴露风险。
 
 AI 操作：编辑 `$HUB/products.json`，给 `products` 数组追加新条目；如果 slug 已存在则整体替换（更新 version/updatedAt/其他字段）。
 

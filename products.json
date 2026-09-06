@@ -19,7 +19,7 @@
     },
     {
       "slug": "HanmoArcomage",
-      "name": "汉墨牌塔",
+      "name": "汉末牌塔",
       "nameEn": "Hanmo Card Tower",
       "tagline": "Roguelike 卡牌爬塔单机版",
       "entry": "demos/HanmoArcomage/",

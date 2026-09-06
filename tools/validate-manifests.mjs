@@ -8,6 +8,8 @@
 //  - schemaVersion 推荐 3.0；其他版本给 warning，不阻塞
 //  - slug 字段必须等于目录名
 //  - status 必须是 alpha/beta/released/archived
+//  - 禁止字段：homepage / repository / repo / source / code（违反"主页禁源码"规则）
+//    出现即 warning（不阻塞 commit，但提示违反 DEMO-HOSTING.md §3.3）
 //  - thumbnail 文件必须存在
 //  - entry 文件必须存在
 // 失败 → exit 1，阻塞本地构建产物提交（commit 时跑一次即可）。
@@ -21,6 +23,7 @@ const REQUIRED_FIELDS = [
 ];
 const SUPPORTED_STATUS = ['alpha', 'beta', 'released', 'archived'];
 const RECOMMENDED_SCHEMA_VERSION = '3.0';
+const FORBIDDEN_FIELDS = ['homepage', 'repository', 'repo', 'source', 'code'];
 
 const root = process.cwd();
 const demosDir = join(root, 'docs', 'demos');
@@ -115,6 +118,15 @@ for (const slug of slugs) {
     if (!existsSync(ep)) {
       console.error(`  [ERR] entry 文件不存在: ${manifest.entry}`);
       errors++;
+    }
+  }
+
+  // 禁止字段（违反"主页禁源码"规则，参见 DEMO-HOSTING.md §3.3）
+  // 不阻塞 commit，仅 warning，下次同步清理时移除
+  for (const f of FORBIDDEN_FIELDS) {
+    if (manifest[f] !== undefined && manifest[f] !== null) {
+      console.warn(`  [WARN] forbidden field "${f}"=…（违反"主页禁源码"规则，参见 DEMO-HOSTING.md §3.3；下次同步时移除）`);
+      warnings++;
     }
   }
 
