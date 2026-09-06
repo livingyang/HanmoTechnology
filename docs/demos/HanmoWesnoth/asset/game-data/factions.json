@@ -1,0 +1,304 @@
+[
+ {
+  "id": "Drakes",
+  "name": "Drakes",
+  "image": "units/drakes/flare.png",
+  "type": "random",
+  "leaders": [
+   "Drake Flare",
+   "Fire Drake",
+   "Drake Arbiter",
+   "Drake Thrasher",
+   "Drake Warrior",
+   "Saurian Oracle"
+  ],
+  "randomLeaders": [
+   "Drake Flare",
+   "Fire Drake",
+   "Drake Arbiter",
+   "Drake Thrasher",
+   "Drake Warrior"
+  ],
+  "recruits": [
+   "Drake Burner",
+   "Drake Clasher",
+   "Drake Glider",
+   "Drake Fighter",
+   "Saurian Skirmisher",
+   "Saurian Augur"
+  ],
+  "terrainLiked": [
+   "Hh",
+   "Ha",
+   "Ds",
+   "Ss"
+  ],
+  "recruitmentPattern": [
+   "fighter",
+   "fighter",
+   "archer",
+   "healer",
+   "scout",
+   "scout"
+  ]
+ },
+ {
+  "id": "Dunefolk",
+  "name": "Dunefolk",
+  "image": "units/dunefolk/rover/explorer.png",
+  "type": "random",
+  "leaders": [
+   "Dune Explorer",
+   "Dune Swordsman",
+   "Dune Spearguard",
+   "Dune Scorcher",
+   "Dune Apothecary"
+  ],
+  "randomLeaders": [
+   "Dune Explorer",
+   "Dune Swordsman",
+   "Dune Spearguard",
+   "Dune Scorcher",
+   "Dune Apothecary"
+  ],
+  "recruits": [
+   "Dune Rover",
+   "Dune Soldier",
+   "Dune Skirmisher",
+   "Dune Rider",
+   "Dune Herbalist",
+   "Dune Burner",
+   "Naga Dirkfang"
+  ],
+  "terrainLiked": [
+   "Ss",
+   "Hh",
+   "Ha",
+   "Ww"
+  ],
+  "recruitmentPattern": [
+   "fighter",
+   "fighter",
+   "mixed fighter",
+   "mixed fighter",
+   "archer",
+   "healer",
+   "scout"
+  ]
+ },
+ {
+  "id": "Knalgan Alliance",
+  "name": "Knalgan Alliance",
+  "image": "units/dwarves/steelclad.png",
+  "type": "random",
+  "leaders": [
+   "Dwarvish Steelclad",
+   "Dwarvish Thunderguard",
+   "Dwarvish Stalwart",
+   "Rogue",
+   "Trapper"
+  ],
+  "randomLeaders": [],
+  "recruits": [
+   "Dwarvish Guardsman",
+   "Dwarvish Fighter",
+   "Dwarvish Ulfserker",
+   "Dwarvish Thunderer",
+   "Thief",
+   "Poacher",
+   "Footpad",
+   "Gryphon Rider"
+  ],
+  "terrainLiked": [
+   "Hh",
+   "Ha",
+   "Mm"
+  ],
+  "recruitmentPattern": [
+   "fighter",
+   "fighter",
+   "fighter",
+   "mixed fighter",
+   "archer",
+   "scout"
+  ]
+ },
+ {
+  "id": "Loyalists",
+  "name": "Loyalists",
+  "image": "units/human-loyalists/lieutenant.png",
+  "type": "random",
+  "leaders": [
+   "Lieutenant",
+   "Swordsman",
+   "Pikeman",
+   "Javelineer",
+   "Shock Trooper",
+   "Longbowman",
+   "White Mage",
+   "Red Mage"
+  ],
+  "randomLeaders": [
+   "Lieutenant",
+   "Swordsman",
+   "Pikeman",
+   "Javelineer",
+   "Longbowman",
+   "White Mage",
+   "Red Mage"
+  ],
+  "recruits": [
+   "Cavalryman",
+   "Horseman",
+   "Spearman",
+   "Fencer",
+   "Heavy Infantryman",
+   "Bowman",
+   "Mage",
+   "Merman Fighter"
+  ],
+  "terrainLiked": [
+   "Gg",
+   "Ww",
+   "Wo"
+  ],
+  "recruitmentPattern": [
+   "fighter",
+   "fighter",
+   "fighter",
+   "archer",
+   "mixed fighter",
+   "scout"
+  ]
+ },
+ {
+  "id": "Northerners",
+  "name": "Northerners",
+  "image": "units/orcs/warrior.png",
+  "type": "random",
+  "leaders": [
+   "Orcish Warrior",
+   "Troll",
+   "Troll Rocklobber",
+   "Orcish Crossbowman",
+   "Orcish Slayer"
+  ],
+  "randomLeaders": [],
+  "recruits": [
+   "Orcish Grunt",
+   "Troll Whelp",
+   "Wolf Rider",
+   "Orcish Archer",
+   "Orcish Assassin",
+   "Naga Fighter",
+   "Goblin Spearman"
+  ],
+  "terrainLiked": [
+   "Hh",
+   "Ha",
+   "Mm",
+   "Ss"
+  ],
+  "recruitmentPattern": [
+   "fighter",
+   "fighter",
+   "fighter",
+   "mixed fighter",
+   "archer",
+   "scout"
+  ]
+ },
+ {
+  "id": "Rebels",
+  "name": "Rebels",
+  "image": "units/elves-wood/captain.png",
+  "type": "random",
+  "leaders": [
+   "Elvish Captain",
+   "Elvish Hero",
+   "Elvish Ranger",
+   "Elvish Marksman",
+   "Elvish Druid",
+   "Elvish Sorceress",
+   "White Mage",
+   "Red Mage",
+   "Elder Wose"
+  ],
+  "randomLeaders": [
+   "Elvish Captain",
+   "Elvish Hero",
+   "Elvish Ranger",
+   "Elvish Marksman",
+   "Elvish Druid",
+   "Elvish Sorceress",
+   "White Mage",
+   "Red Mage"
+  ],
+  "recruits": [
+   "Elvish Fighter",
+   "Elvish Archer",
+   "Mage",
+   "Elvish Shaman",
+   "Elvish Scout",
+   "Wose",
+   "Merman Hunter"
+  ],
+  "terrainLiked": [
+   "Ff",
+   "Fa",
+   "Ss",
+   "Ww"
+  ],
+  "recruitmentPattern": [
+   "fighter",
+   "fighter",
+   "archer",
+   "archer",
+   "mixed fighter",
+   "healer",
+   "scout"
+  ]
+ },
+ {
+  "id": "Undead",
+  "name": "Undead",
+  "image": "units/undead-necromancers/dark-sorcerer.png",
+  "type": "random",
+  "leaders": [
+   "Dark Sorcerer",
+   "Revenant",
+   "Deathblade",
+   "Bone Shooter",
+   "Necrophage"
+  ],
+  "randomLeaders": [
+   "Dark Sorcerer",
+   "Revenant",
+   "Deathblade",
+   "Bone Shooter"
+  ],
+  "recruits": [
+   "Skeleton",
+   "Skeleton Archer",
+   "Walking Corpse",
+   "Ghost",
+   "Vampire Bat",
+   "Dark Adept",
+   "Ghoul"
+  ],
+  "terrainLiked": [
+   "Ss",
+   "Hh",
+   "Ha",
+   "Ww"
+  ],
+  "recruitmentPattern": [
+   "fighter",
+   "fighter",
+   "archer",
+   "fighter",
+   "scout",
+   "archer"
+  ]
+ }
+]

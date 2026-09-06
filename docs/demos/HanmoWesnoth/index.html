@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>韦诺之战 · 王位继承人战役（Web 试玩）</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0d0a12;
+        overflow: hidden;
+      }
+    </style>
+    <script>
+      // Electron preload 替身（web-deploy-handoff.md §2.2）。
+      //
+      // 纯静态站点没有主进程，渲染层所有资源仍经 window.wesnoth.resourceUrl 拉取
+      // （§2.1：这是渲染层唯一的资源入口），所以只要注入正确的门面，渲染层即与
+      // 宿主无关。这里把前缀固定为**站内相对** `asset/`（与 scripts/web-assets.ts
+      // 的输出目录对齐），因此整站可直接托管在任意子路径下而无需改构建产物。
+      //
+      // 覆盖方式：URL 查询参数 ?assetBase=<前缀>（资源走 CDN 分离托管时给绝对 URL）。
+      //
+      // 不注入 saves IPC —— saveStorage.ts 检测到 window.wesnoth.saves 缺失即自动
+      // 走浏览器本机存储兜底（§2.5），存档链路与 Electron 共用同一套上层 API。
+      (function () {
+        var base = new URLSearchParams(location.search).get('assetBase') || 'asset';
+        window.wesnoth = {
+          resourceUrl: function (p) {
+            return base + '/' + String(p).replace(/^\/+/, '');
+          },
+          resourceBase: function () {
+            return base;
+          }
+        };
+      })();
+    </script>
+    <script type="module" crossorigin src="assets/index-D-fydBub.js"></script>
+    <link rel="stylesheet" crossorigin href="assets/index-B7wWCQFO.css">
+  </head>
+  <body>
+    <!-- 真实应用入口（src/main.ts → App → CampaignView：菜单 → 故事屏 → 战局） -->
+    <div id="app"></div>
+  </body>
+</html>

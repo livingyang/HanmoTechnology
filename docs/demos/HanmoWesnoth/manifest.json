@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "3.0",
+  "slug": "HanmoWesnoth",
+  "name": "汉末韦诺之战",
+  "nameEn": "Hanmo Wesnoth",
+  "tagline": "回合制战棋单机版（王位继承人战役）",
+  "thumbnail": "thumbnail.jpg",
+  "version": "0.1.0",
+  "status": "alpha",
+  "tags": [
+    "strategy",
+    "tbs",
+    "vue3",
+    "playcanvas",
+    "战棋"
+  ],
+  "homepage": "https://github.com/livingyang/HanmoWesnoth",
+  "embeddable": true,
+  "sandbox": "allow-scripts allow-same-origin",
+  "entry": "index.html",
+  "updatedAt": "2026-09-05"
+}

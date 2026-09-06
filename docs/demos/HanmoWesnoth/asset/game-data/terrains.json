@@ -1,0 +1,5336 @@
+[
+ {
+  "id": "deep_water_gray",
+  "name": "Deep Water",
+  "code": "Wog",
+  "isOverlay": false,
+  "aliasOf": [
+   "Wdt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.5,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "deep_water_medium",
+  "name": "Deep Water",
+  "code": "Wo",
+  "isOverlay": false,
+  "aliasOf": [
+   "Wdt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.5,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "deep_water_tropical",
+  "name": "Deep Water",
+  "code": "Wot",
+  "isOverlay": false,
+  "aliasOf": [
+   "Wdt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.5,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "gray_tropical_water",
+  "name": "Shallow Water",
+  "code": "Wwg",
+  "isOverlay": false,
+  "aliasOf": [
+   "Wst"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "medium_shallow_water",
+  "name": "Shallow Water",
+  "code": "Ww",
+  "isOverlay": false,
+  "aliasOf": [
+   "Wst"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "tropical_water",
+  "name": "Shallow Water",
+  "code": "Wwt",
+  "isOverlay": false,
+  "aliasOf": [
+   "Wst"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "ford",
+  "name": "Ford",
+  "code": "Wwf",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt",
+   "Wst"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.3,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "gray_reef",
+  "name": "Coastal Reef",
+  "code": "Wwrg",
+  "isOverlay": false,
+  "aliasOf": [
+   "Wrt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.3,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "medium_reef",
+  "name": "Coastal Reef",
+  "code": "Wwr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Wrt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.3,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "tropical_reef",
+  "name": "Coastal Reef",
+  "code": "Wwrt",
+  "isOverlay": false,
+  "aliasOf": [
+   "Wrt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.3,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "sea_kelp",
+  "name": "Swamp",
+  "code": "^Wkf",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "St"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "St"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.45,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "swamp_water_reed",
+  "name": "Swamp",
+  "code": "Ss",
+  "isOverlay": false,
+  "aliasOf": [
+   "St"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "quagmire",
+  "name": "Swamp",
+  "code": "Sm",
+  "isOverlay": false,
+  "aliasOf": [
+   "St"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "water"
+ },
+ {
+  "id": "grassland",
+  "name": "Grassland",
+  "code": "Gg",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "savanna",
+  "name": "Grassland",
+  "code": "Gs",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "grass_dry",
+  "name": "Grassland",
+  "code": "Gd",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "leaf_litter",
+  "name": "Grassland",
+  "code": "Gll",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat,fall"
+ },
+ {
+  "id": "dirt_dark",
+  "name": "Dirt",
+  "code": "Rb",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "dirt",
+  "name": "Dirt",
+  "code": "Re",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "dirt_dry",
+  "name": "Dirt",
+  "code": "Rd",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "desert,flat"
+ },
+ {
+  "id": "road",
+  "name": "Road",
+  "code": "Rr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "road_clean",
+  "name": "Road",
+  "code": "Rrc",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "road_desert",
+  "name": "Road",
+  "code": "Rrd",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat,desert"
+ },
+ {
+  "id": "stone_path",
+  "name": "Road",
+  "code": "Rp",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "road_icy",
+  "name": "Road",
+  "code": "Rra",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat,frozen"
+ },
+ {
+  "id": "ice",
+  "name": "Ice",
+  "code": "Ai",
+  "isOverlay": false,
+  "aliasOf": [
+   "At"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "frozen"
+ },
+ {
+  "id": "snow",
+  "name": "Snow",
+  "code": "Aa",
+  "isOverlay": false,
+  "aliasOf": [
+   "At"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "frozen"
+ },
+ {
+  "id": "desert",
+  "name": "Desert",
+  "code": "Dd",
+  "isOverlay": false,
+  "aliasOf": [
+   "Dt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "desert"
+ },
+ {
+  "id": "sand_beach",
+  "name": "Sand",
+  "code": "Ds",
+  "isOverlay": false,
+  "aliasOf": [
+   "Dt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "desert"
+ },
+ {
+  "id": "oasis",
+  "name": "Oasis",
+  "code": "^Do",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Wst"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.3,
+  "hidden": false,
+  "editorGroup": "desert,water"
+ },
+ {
+  "id": "sand_rubble",
+  "name": "Rubble",
+  "code": "^Dr",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ht"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ht"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "desert,rough"
+ },
+ {
+  "id": "crater",
+  "name": "Crater",
+  "code": "^Dc",
+  "isOverlay": true,
+  "aliasOf": [
+   "Dt"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Dt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "desert"
+ },
+ {
+  "id": "flowers_mixed",
+  "name": "flowers_mixed",
+  "code": "^Efm",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "farm",
+  "name": "Farmland",
+  "code": "^Gvs",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "stones_small",
+  "name": "stones_small",
+  "code": "^Es",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "snowbits_small",
+  "name": "snowbits_small",
+  "code": "^Esa",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,frozen"
+ },
+ {
+  "id": "mushrooms_small",
+  "name": "mushrooms_small",
+  "code": "^Em",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "mushrooms_farm",
+  "name": "mushrooms_farm",
+  "code": "^Emf",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,cave"
+ },
+ {
+  "id": "desert_plants",
+  "name": "desert_plants",
+  "code": "^Edp",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,desert"
+ },
+ {
+  "id": "desert_plants_sans_bones",
+  "name": "desert_plants_sans_bones",
+  "code": "^Edpp",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,desert"
+ },
+ {
+  "id": "windmill",
+  "name": "windmill",
+  "code": "^Wm",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "campfire",
+  "name": "campfire",
+  "code": "^Ecf",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "wallfire",
+  "name": "wallfire",
+  "code": "^Efs",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,cave"
+ },
+ {
+  "id": "brazier",
+  "name": "brazier",
+  "code": "^Eb",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "brazier-lit",
+  "name": "brazier-lit",
+  "code": "^Ebn",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "fence",
+  "name": "fence",
+  "code": "^Eff",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "fence_iron",
+  "name": "Fence",
+  "code": "^Eqf",
+  "isOverlay": true,
+  "aliasOf": [
+   "Qt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "fence_palisade",
+  "name": "Palisade",
+  "code": "^Eqp",
+  "isOverlay": true,
+  "aliasOf": [
+   "Qt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "sand_drifts",
+  "name": "sand_drifts",
+  "code": "^Esd",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,desert"
+ },
+ {
+  "id": "water-lilies",
+  "name": "water-lilies",
+  "code": "^Ewl",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "water,embellishments"
+ },
+ {
+  "id": "water-lilies-flower",
+  "name": "water-lilies-flower",
+  "code": "^Ewf",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "water,embellishments"
+ },
+ {
+  "id": "seashells",
+  "name": "seashells",
+  "code": "^Ewsh",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "water,embellishments"
+ },
+ {
+  "id": "detritus_trash",
+  "name": "Trash",
+  "code": "^Edt",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "detritus_bones",
+  "name": "Remains",
+  "code": "^Edb",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments"
+ },
+ {
+  "id": "wall_windows",
+  "name": "Window",
+  "code": "^Exw",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,cave"
+ },
+ {
+  "id": "great_tree",
+  "name": "Great Tree",
+  "code": "^Fet",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest"
+ },
+ {
+  "id": "great_tree_snowy",
+  "name": "Great Tree",
+  "code": "^Feta",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "frozen,forest"
+ },
+ {
+  "id": "great_tree_dead",
+  "name": "Great Tree",
+  "code": "^Fetd",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest"
+ },
+ {
+  "id": "great_tree_dead_oak",
+  "name": "Great Tree",
+  "code": "^Feth",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest"
+ },
+ {
+  "id": "tropical_forest",
+  "name": "Forest",
+  "code": "^Ft",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest"
+ },
+ {
+  "id": "rainforest",
+  "name": "Forest",
+  "code": "^Ftr",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest"
+ },
+ {
+  "id": "palm_desert_forest",
+  "name": "Forest",
+  "code": "^Ftd",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest,desert"
+ },
+ {
+  "id": "palm_forest",
+  "name": "Forest",
+  "code": "^Ftp",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest"
+ },
+ {
+  "id": "savanna_forest",
+  "name": "Forest",
+  "code": "^Fts",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest,desert"
+ },
+ {
+  "id": "pine_forest",
+  "name": "Forest",
+  "code": "^Fp",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest"
+ },
+ {
+  "id": "snow_forest",
+  "name": "Forest",
+  "code": "^Fpa",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "At",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "At",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "frozen,forest"
+ },
+ {
+  "id": "deciduous_forest_summer",
+  "name": "Forest",
+  "code": "^Fds",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest"
+ },
+ {
+  "id": "deciduous_forest_fall",
+  "name": "Forest",
+  "code": "^Fdf",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest,fall"
+ },
+ {
+  "id": "deciduous_forest_winter",
+  "name": "Forest",
+  "code": "^Fdw",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest,fall"
+ },
+ {
+  "id": "deciduous_forest_winter_snow",
+  "name": "Forest",
+  "code": "^Fda",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "At",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "At",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "frozen,forest"
+ },
+ {
+  "id": "mixed_forest_summer",
+  "name": "Forest",
+  "code": "^Fms",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest"
+ },
+ {
+  "id": "mixed_forest_fall",
+  "name": "Forest",
+  "code": "^Fmf",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest,fall"
+ },
+ {
+  "id": "mixed_forest_winter",
+  "name": "Forest",
+  "code": "^Fmw",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest,fall"
+ },
+ {
+  "id": "mixed_forest_winter_snow",
+  "name": "Forest",
+  "code": "^Fma",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "At",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "At",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "frozen,forest"
+ },
+ {
+  "id": "hills_regular",
+  "name": "Hills",
+  "code": "Hh",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ht"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough"
+ },
+ {
+  "id": "hills_dry",
+  "name": "Hills",
+  "code": "Hhd",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ht"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "fall,rough"
+ },
+ {
+  "id": "desert_hills",
+  "name": "Dunes",
+  "code": "Hd",
+  "isOverlay": false,
+  "aliasOf": [
+   "Dt",
+   "Ht"
+  ],
+  "mvtAlias": [
+   "-",
+   "Dt",
+   "Ht"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "desert,rough"
+ },
+ {
+  "id": "snow_hills",
+  "name": "Hills",
+  "code": "Ha",
+  "isOverlay": false,
+  "aliasOf": [
+   "At",
+   "Ht"
+  ],
+  "mvtAlias": [
+   "-",
+   "At",
+   "Ht"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "frozen,rough"
+ },
+ {
+  "id": "regular_mountains",
+  "name": "Mountains",
+  "code": "Mm",
+  "isOverlay": false,
+  "aliasOf": [
+   "Mt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough"
+ },
+ {
+  "id": "dry_mountains",
+  "name": "Mountains",
+  "code": "Md",
+  "isOverlay": false,
+  "aliasOf": [
+   "Mt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough,desert"
+ },
+ {
+  "id": "snow_mountains",
+  "name": "Mountains",
+  "code": "Ms",
+  "isOverlay": false,
+  "aliasOf": [
+   "At",
+   "Mt"
+  ],
+  "mvtAlias": [
+   "-",
+   "At",
+   "Mt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough,frozen"
+ },
+ {
+  "id": "desert_mountains",
+  "name": "Mountains",
+  "code": "Mdd",
+  "isOverlay": false,
+  "aliasOf": [
+   "Mt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough,desert"
+ },
+ {
+  "id": "regular_stone_floor",
+  "name": "Stone Floor",
+  "code": "Isr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "ancient_stone_floor",
+  "name": "Stone Floor",
+  "code": "Isa",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "rug_floor",
+  "name": "Rug",
+  "code": "Isc",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "rug2_floor",
+  "name": "Rug",
+  "code": "Iwc",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "rug3_floor",
+  "name": "Rug",
+  "code": "Urc",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,flat"
+ },
+ {
+  "id": "wood_floor",
+  "name": "Wooden Floor",
+  "code": "Iwr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "old_wood_floor",
+  "name": "Old Wooden Floor",
+  "code": "Iwo",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "flat"
+ },
+ {
+  "id": "lit",
+  "name": "Lit",
+  "code": "^Ii",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave"
+ },
+ {
+  "id": "cave_floor",
+  "name": "Cave",
+  "code": "Uu",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ut"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave"
+ },
+ {
+  "id": "cave_earthy",
+  "name": "Cave",
+  "code": "Uue",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ut"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave"
+ },
+ {
+  "id": "flagstones_dark",
+  "name": "Road",
+  "code": "Urb",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,flat"
+ },
+ {
+  "id": "cave_path",
+  "name": "Road",
+  "code": "Ur",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,flat"
+ },
+ {
+  "id": "fungus_grove_old",
+  "name": "Mushroom Grove",
+  "code": "^Uf",
+  "isOverlay": true,
+  "aliasOf": [
+   "Tt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true,
+  "editorGroup": "cave,forest"
+ },
+ {
+  "id": "fungus_beam_old",
+  "name": "Mushroom Grove",
+  "code": "^Ufi",
+  "isOverlay": true,
+  "aliasOf": [
+   "Tt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true,
+  "editorGroup": "cave"
+ },
+ {
+  "id": "fungus_grove",
+  "name": "Mushroom Grove",
+  "code": "^Tf",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Tt"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Tt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,forest"
+ },
+ {
+  "id": "fungus_beam",
+  "name": "Mushroom Grove",
+  "code": "^Tfi",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Tt"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Tt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave"
+ },
+ {
+  "id": "fungus_floor",
+  "name": "Mycelium",
+  "code": "Tb",
+  "isOverlay": false,
+  "aliasOf": [
+   "Tt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave"
+ },
+ {
+  "id": "rocky_cave",
+  "name": "Rockbound Cave",
+  "code": "Uh",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ut",
+   "Ht"
+  ],
+  "mvtAlias": [
+   "-",
+   "Ut",
+   "Ht"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,rough"
+ },
+ {
+  "id": "earthy_rocky_cave",
+  "name": "Rockbound Cave",
+  "code": "Uhe",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ut",
+   "Ht"
+  ],
+  "mvtAlias": [
+   "-",
+   "Ut",
+   "Ht"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,rough"
+ },
+ {
+  "id": "mine_rails",
+  "name": "Mine Rail",
+  "code": "^Br|",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Rt"
+  ],
+  "mvtAlias": [
+   "Gt",
+   "Rt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "cave"
+ },
+ {
+  "id": "mine_railsdiag1",
+  "name": "Mine Rail",
+  "code": "^Br/",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Rt"
+  ],
+  "mvtAlias": [
+   "Gt",
+   "Rt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "cave"
+ },
+ {
+  "id": "mine_railsdiag2",
+  "name": "Mine Rail",
+  "code": "^Br\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Rt"
+  ],
+  "mvtAlias": [
+   "Gt",
+   "Rt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "cave"
+ },
+ {
+  "id": "high_border",
+  "name": "high_border",
+  "code": "^Qhh",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,elevation"
+ },
+ {
+  "id": "high_canyon",
+  "name": "high_canyon",
+  "code": "^Qhu",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,elevation"
+ },
+ {
+  "id": "high_canyon_obst",
+  "name": "high_canyon_obst",
+  "code": "^Qhux",
+  "isOverlay": true,
+  "aliasOf": [
+   "Qt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "obstacle,elevation"
+ },
+ {
+  "id": "high_border_woods",
+  "name": "high_border_woods",
+  "code": "^Qhhf",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest,elevation"
+ },
+ {
+  "id": "high_canyon_woods",
+  "name": "high_canyon_woods",
+  "code": "^Qhuf",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Ft"
+  ],
+  "mvtAlias": [
+   "-",
+   "_bas",
+   "Ft"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest,elevation"
+ },
+ {
+  "id": "canyon",
+  "name": "Chasm",
+  "code": "Qxu",
+  "isOverlay": false,
+  "aliasOf": [
+   "Qt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "chasm_earthy",
+  "name": "Chasm",
+  "code": "Qxe",
+  "isOverlay": false,
+  "aliasOf": [
+   "Qt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "abyss",
+  "name": "Chasm",
+  "code": "Qxua",
+  "isOverlay": false,
+  "aliasOf": [
+   "Qt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "lava_chasm",
+  "name": "Chasm",
+  "code": "Ql",
+  "isOverlay": false,
+  "aliasOf": [
+   "Qt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "lava",
+  "name": "Lava",
+  "code": "Qlf",
+  "isOverlay": false,
+  "aliasOf": [
+   "Qt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "volcano",
+  "name": "Volcano",
+  "code": "Mv",
+  "isOverlay": false,
+  "aliasOf": [
+   "Qt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough,obstacle"
+ },
+ {
+  "id": "cloud",
+  "name": "Mountains",
+  "code": "Mm^Xm",
+  "isOverlay": false,
+  "aliasOf": [
+   "-",
+   "Mt",
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough,obstacle"
+ },
+ {
+  "id": "cloud_dry",
+  "name": "Mountains",
+  "code": "Md^Xm",
+  "isOverlay": false,
+  "aliasOf": [
+   "-",
+   "Mt",
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough,obstacle,desert"
+ },
+ {
+  "id": "cloud_snow",
+  "name": "Mountains",
+  "code": "Ms^Xm",
+  "isOverlay": false,
+  "aliasOf": [
+   "-",
+   "Mt",
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough,obstacle,frozen"
+ },
+ {
+  "id": "cloud_desert",
+  "name": "Mountains",
+  "code": "Mdd^Xm",
+  "isOverlay": false,
+  "aliasOf": [
+   "-",
+   "Mt",
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "rough,obstacle,desert"
+ },
+ {
+  "id": "cavewall",
+  "name": "Cave Wall",
+  "code": "Xu",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "minewall",
+  "name": "Mine Wall",
+  "code": "Xuc",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "cavewall_earthy",
+  "name": "Cave Wall",
+  "code": "Xue",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "cavewall_damaged",
+  "name": "Cave Wall",
+  "code": "Xur",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_hedge",
+  "name": "Thick Hedges",
+  "code": "Xuf",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "forest,obstacle"
+ },
+ {
+  "id": "cavewall_earthy_hewn",
+  "name": "Cave Wall",
+  "code": "Xuce",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone",
+  "name": "Stone Wall",
+  "code": "Xos",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone_lit",
+  "name": "Stone Wall",
+  "code": "Xol",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone_mine",
+  "name": "Mine Wall",
+  "code": "Xom",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone_white",
+  "name": "Interior Wall",
+  "code": "Xoi",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone_clean",
+  "name": "Stone Wall",
+  "code": "Xoc",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone_ancient",
+  "name": "Stone Wall",
+  "code": "Xoa",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone_tomb",
+  "name": "Catacombs Wall",
+  "code": "Xot",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone_overgrown",
+  "name": "Overgrown Wall",
+  "code": "Xof",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone_damaged",
+  "name": "Stone Wall",
+  "code": "Xor",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,obstacle"
+ },
+ {
+  "id": "wall_stone_ruins",
+  "name": "Ruined Wall",
+  "code": "Exos",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt",
+   "Ut"
+  ],
+  "mvtAlias": [
+   "-",
+   "Gt",
+   "Ut"
+  ],
+  "defAlias": [
+   "-",
+   "Gt",
+   "Ut"
+  ],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "cave,flat"
+ },
+ {
+  "id": "portal_gate_rusty_sw",
+  "name": "Gate",
+  "code": "^Pr\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Xt"
+  ],
+  "mvtAlias": [
+   "Xt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_gate_rusty_se",
+  "name": "Gate",
+  "code": "^Pr/",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Xt"
+  ],
+  "mvtAlias": [
+   "Xt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_gate_rusty_n",
+  "name": "Gate",
+  "code": "^Pr|",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Xt"
+  ],
+  "mvtAlias": [
+   "Xt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_door_wooden_sw",
+  "name": "Door",
+  "code": "^Pw\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Xt"
+  ],
+  "mvtAlias": [
+   "Xt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_door_wooden_se",
+  "name": "Door",
+  "code": "^Pw/",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Xt"
+  ],
+  "mvtAlias": [
+   "Xt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_door_wooden_n",
+  "name": "Door",
+  "code": "^Pw|",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Xt"
+  ],
+  "mvtAlias": [
+   "Xt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_gate_rusty_open_sw",
+  "name": "Gate",
+  "code": "^Pr\\o",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_gate_rusty_open_se",
+  "name": "Gate",
+  "code": "^Pr/o",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_gate_rusty_open_n",
+  "name": "Gate",
+  "code": "^Pr|o",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_door_wooden_open_sw",
+  "name": "Door",
+  "code": "^Pw\\o",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_door_wooden_open_se",
+  "name": "Door",
+  "code": "^Pw/o",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "portal_door_wooden_open_n",
+  "name": "Door",
+  "code": "^Pw|o",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "embellishments,obstacle"
+ },
+ {
+  "id": "impassable_overlay",
+  "name": "impassable_overlay",
+  "code": "^Xo",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Xt"
+  ],
+  "mvtAlias": [
+   "Xt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "obstacle,special"
+ },
+ {
+  "id": "unwalkable_overlay",
+  "name": "unwalkable_overlay",
+  "code": "^Qov",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Qt"
+  ],
+  "mvtAlias": [
+   "Qt"
+  ],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "obstacle,special"
+ },
+ {
+  "id": "void",
+  "name": "Void",
+  "code": "Xv",
+  "isOverlay": false,
+  "aliasOf": [
+   "Xt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "obstacle,special"
+ },
+ {
+  "id": "desert_village",
+  "name": "Village",
+  "code": "^Vda",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,desert"
+ },
+ {
+  "id": "desert_village_ruin",
+  "name": "Village",
+  "code": "^Vdr",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,desert"
+ },
+ {
+  "id": "desert_village_tent",
+  "name": "Village",
+  "code": "^Vdt",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,desert"
+ },
+ {
+  "id": "camp_village",
+  "name": "Village",
+  "code": "^Vct",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "orcish_village",
+  "name": "Village",
+  "code": "^Vo",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "orcish_snow_village",
+  "name": "Village",
+  "code": "^Voa",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,frozen"
+ },
+ {
+  "id": "elven_snow_village",
+  "name": "Village",
+  "code": "^Vea",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,frozen"
+ },
+ {
+  "id": "elven_village",
+  "name": "Village",
+  "code": "^Ve",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "human_village",
+  "name": "Village",
+  "code": "^Vh",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "snow_village",
+  "name": "Village",
+  "code": "^Vha",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,frozen"
+ },
+ {
+  "id": "human_village_ruin",
+  "name": "Village",
+  "code": "^Vhr",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "city_village",
+  "name": "Village",
+  "code": "^Vhc",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "windmill_village",
+  "name": "Village",
+  "code": "^Vwm",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "city_village_wno",
+  "name": "Village",
+  "code": "^Vhca",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,frozen"
+ },
+ {
+  "id": "city_village_ruin",
+  "name": "Village",
+  "code": "^Vhcr",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "hill_village",
+  "name": "Village",
+  "code": "^Vhh",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,rough"
+ },
+ {
+  "id": "snow-hill_village",
+  "name": "Village",
+  "code": "^Vhha",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,frozen,rough"
+ },
+ {
+  "id": "hill_village_ruin",
+  "name": "Village",
+  "code": "^Vhhr",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,rough"
+ },
+ {
+  "id": "tropical_forest_village",
+  "name": "Village",
+  "code": "^Vht",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "drake_village",
+  "name": "Village",
+  "code": "^Vd",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "drake_snow_village",
+  "name": "Village",
+  "code": "^Vka",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,frozen"
+ },
+ {
+  "id": "underground_village",
+  "name": "Village",
+  "code": "^Vu",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,cave"
+ },
+ {
+  "id": "dwarven_village",
+  "name": "Village",
+  "code": "^Vud",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,cave"
+ },
+ {
+  "id": "hut_village",
+  "name": "Village",
+  "code": "^Vc",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "hut_snow_village",
+  "name": "Village",
+  "code": "^Vca",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,frozen"
+ },
+ {
+  "id": "logcabin_village",
+  "name": "Village",
+  "code": "^Vl",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village"
+ },
+ {
+  "id": "logcabin_snow_village",
+  "name": "Village",
+  "code": "^Vla",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,frozen"
+ },
+ {
+  "id": "igloo",
+  "name": "Village",
+  "code": "^Vaa",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,frozen"
+ },
+ {
+  "id": "swamp_village",
+  "name": "Village",
+  "code": "^Vhs",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Vt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "water,village"
+ },
+ {
+  "id": "mermen-village",
+  "name": "Village",
+  "code": "^Vm",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "water,village"
+ },
+ {
+  "id": "village_overlay",
+  "name": "Village",
+  "code": "^Vov",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": 8,
+  "givesIncome": true,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "village,special"
+ },
+ {
+  "id": "encampment",
+  "name": "Encampment",
+  "code": "Ce",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "encampment_ruin",
+  "name": "Encampment",
+  "code": "Cer",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "encampment_snow",
+  "name": "Encampment",
+  "code": "Cea",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "At"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "orcish_fort",
+  "name": "Castle",
+  "code": "Co",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "snow_orcish_fort",
+  "name": "Castle",
+  "code": "Coa",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "At"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "human_castle",
+  "name": "Castle",
+  "code": "Ch",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "snow_castle",
+  "name": "Castle",
+  "code": "Cha",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "At"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "elven_castle",
+  "name": "Castle",
+  "code": "Cv",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "elven_castle_ruin",
+  "name": "Castle",
+  "code": "Cvr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "elven_castle_winter",
+  "name": "Castle",
+  "code": "Cva",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "dwarven_castle",
+  "name": "Castle",
+  "code": "Cud",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,cave"
+ },
+ {
+  "id": "dwarven_castle2",
+  "name": "Castle",
+  "code": "Cf",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "dwarven_castle_ruin",
+  "name": "Castle",
+  "code": "Cfr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "dwarven_castle_winter",
+  "name": "Castle",
+  "code": "Cfa",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "ruin",
+  "name": "Ruined Castle",
+  "code": "Chr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "sunkenruin",
+  "name": "Ruined Castle",
+  "code": "Chw",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "Wst"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "castle,water"
+ },
+ {
+  "id": "swampruin",
+  "name": "Ruined Castle",
+  "code": "Chs",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "St"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "castle,water"
+ },
+ {
+  "id": "sand_castle",
+  "name": "Castle",
+  "code": "Cd",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,desert"
+ },
+ {
+  "id": "sand_castle_ruin",
+  "name": "Ruined Castle",
+  "code": "Cdr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,desert"
+ },
+ {
+  "id": "troll_encampment",
+  "name": "Encampment",
+  "code": "Cte",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "aquatic_camp",
+  "name": "Encampment",
+  "code": "Cme",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "Wrt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": 0.3,
+  "hidden": false,
+  "editorGroup": "castle,water"
+ },
+ {
+  "id": "aquatic_castle",
+  "name": "Castle",
+  "code": "Cm",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "Wrt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "castle,water"
+ },
+ {
+  "id": "encampment_keep",
+  "name": "Encampment Keep",
+  "code": "Ke",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "encampment_ruin_keep",
+  "name": "Ruined Encampment Keep",
+  "code": "Ker",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "encampment_keep_tall",
+  "name": "Encampment Keep",
+  "code": "Ket",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "encampment_snow_keep",
+  "name": "Encampment Keep",
+  "code": "Kea",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "At"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "orcish_keep",
+  "name": "Keep",
+  "code": "Ko",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "snow_orcish_keep",
+  "name": "Keep",
+  "code": "Koa",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "At"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "human_keep",
+  "name": "Keep",
+  "code": "Kh",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "snow_keep",
+  "name": "Keep",
+  "code": "Kha",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "At"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "elven_keep",
+  "name": "Keep",
+  "code": "Kv",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "elven_keep_ruin",
+  "name": "Keep",
+  "code": "Kvr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "elven_keep_winter",
+  "name": "Keep",
+  "code": "Kva",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "dwarven_keep",
+  "name": "Keep",
+  "code": "Kud",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,cave"
+ },
+ {
+  "id": "dwarven_keep2",
+  "name": "Keep",
+  "code": "Kf",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "dwarven_keep_ruin",
+  "name": "Keep",
+  "code": "Kfr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "dwarven_keep_winter",
+  "name": "Keep",
+  "code": "Kfa",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,frozen"
+ },
+ {
+  "id": "ruined_keep",
+  "name": "Ruined Keep",
+  "code": "Khr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "sunken_keep",
+  "name": "Ruined Keep",
+  "code": "Khw",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "Wst"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,water"
+ },
+ {
+  "id": "swamp_keep",
+  "name": "Ruined Keep",
+  "code": "Khs",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "St"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,water"
+ },
+ {
+  "id": "desert_keep",
+  "name": "Keep",
+  "code": "Kd",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,desert"
+ },
+ {
+  "id": "desert_keep_ruined",
+  "name": "Ruined Keep",
+  "code": "Kdr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,desert"
+ },
+ {
+  "id": "merman_campkeep",
+  "name": "Encampment Keep",
+  "code": "Kme",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "Wrt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,water"
+ },
+ {
+  "id": "troll_campkeep",
+  "name": "Encampment Keep",
+  "code": "Kte",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "merman_castlekeep",
+  "name": "Keep",
+  "code": "Km",
+  "isOverlay": false,
+  "aliasOf": [
+   "Ct",
+   "Wrt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": 0.4,
+  "hidden": false,
+  "editorGroup": "castle,water"
+ },
+ {
+  "id": "castle_overlay",
+  "name": "Castle",
+  "code": "^Cov",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,special"
+ },
+ {
+  "id": "keep_overlay",
+  "name": "Keep",
+  "code": "^Kov",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": true,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "castle,special"
+ },
+ {
+  "id": "bridge",
+  "name": "Bridge",
+  "code": "^Bw|",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,water"
+ },
+ {
+  "id": "bridgediag1",
+  "name": "Bridge",
+  "code": "^Bw/",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,water"
+ },
+ {
+  "id": "bridgediag2",
+  "name": "Bridge",
+  "code": "^Bw\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,water"
+ },
+ {
+  "id": "rotbridge",
+  "name": "Bridge",
+  "code": "^Bw|r",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,water"
+ },
+ {
+  "id": "rotbridgediag1",
+  "name": "Bridge",
+  "code": "^Bw/r",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,water"
+ },
+ {
+  "id": "rotbridgediag2",
+  "name": "Bridge",
+  "code": "^Bw\\r",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,water"
+ },
+ {
+  "id": "stone_bridge",
+  "name": "Bridge",
+  "code": "^Bsb|",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,water"
+ },
+ {
+  "id": "stone_bridgediag1",
+  "name": "Bridge",
+  "code": "^Bsb\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,water"
+ },
+ {
+  "id": "stone_bridgediag2",
+  "name": "Bridge",
+  "code": "^Bsb/",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,water"
+ },
+ {
+  "id": "snow_stone_bridge",
+  "name": "Bridge",
+  "code": "^Bsa|",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,frozen,water"
+ },
+ {
+  "id": "snow_stone_bridgediag1",
+  "name": "Bridge",
+  "code": "^Bsa\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,frozen,water"
+ },
+ {
+  "id": "snow_stone_bridgediag2",
+  "name": "Bridge",
+  "code": "^Bsa/",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,frozen,water"
+ },
+ {
+  "id": "bridgechasm",
+  "name": "Bridge",
+  "code": "^Bs|",
+  "isOverlay": true,
+  "aliasOf": [
+   "Ut",
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "bridgechasmdiag1",
+  "name": "Bridge",
+  "code": "^Bs/",
+  "isOverlay": true,
+  "aliasOf": [
+   "Ut",
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "bridgechasmdiag2",
+  "name": "Bridge",
+  "code": "^Bs\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "Ut",
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "hangingbridgediag1",
+  "name": "Bridge",
+  "code": "^Bh\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "hangingbridgediag2",
+  "name": "Bridge",
+  "code": "^Bh/",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "hangingbridge",
+  "name": "Bridge",
+  "code": "^Bh|",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "stonechasmbridgediag1",
+  "name": "Bridge",
+  "code": "^Bcx\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "stonechasmbridgediag2",
+  "name": "Bridge",
+  "code": "^Bcx/",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "stonechasmbridge",
+  "name": "Bridge",
+  "code": "^Bcx|",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "plankbridgediag1",
+  "name": "Bridge",
+  "code": "^Bp\\",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "plankbridgediag2",
+  "name": "Bridge",
+  "code": "^Bp/",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "plankbridge",
+  "name": "Bridge",
+  "code": "^Bp|",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas",
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0,
+  "hidden": false,
+  "editorGroup": "bridge,cave"
+ },
+ {
+  "id": "mark_high",
+  "name": "mark_high",
+  "code": "^_mh",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "special,elevation"
+ },
+ {
+  "id": "mark_high2",
+  "name": "mark_high2",
+  "code": "^_mhh",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "special,elevation"
+ },
+ {
+  "id": "mark_low",
+  "name": "mark_low",
+  "code": "^_ml",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "special,elevation"
+ },
+ {
+  "id": "mark_low2",
+  "name": "mark_low2",
+  "code": "^_mll",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "special,elevation"
+ },
+ {
+  "id": "off_map",
+  "name": "Void",
+  "code": "_off^_usr",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "special,obstacle"
+ },
+ {
+  "id": "off_map2",
+  "name": "off_map2",
+  "code": "^_fme",
+  "isOverlay": true,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "special,obstacle"
+ },
+ {
+  "id": "overlay_artplaceholder",
+  "name": "overlay_artplaceholder",
+  "code": "^Xxxx",
+  "isOverlay": true,
+  "aliasOf": [
+   "_bas"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "special"
+ },
+ {
+  "id": "shroud",
+  "name": "Shroud",
+  "code": "_s",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true,
+  "editorGroup": "special"
+ },
+ {
+  "id": "fake_shroud_overlay",
+  "name": "Fake Shroud",
+  "code": "^_s",
+  "isOverlay": true,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "special"
+ },
+ {
+  "id": "fog",
+  "name": "Fog",
+  "code": "_f",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": false,
+  "editorGroup": "special"
+ },
+ {
+  "id": "fungus",
+  "name": "Fungus",
+  "code": "Tt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "cave",
+  "name": "Cave",
+  "code": "Ut",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "sand",
+  "name": "Sand",
+  "code": "Dt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true,
+  "editorGroup": "desert"
+ },
+ {
+  "id": "reef",
+  "name": "Coastal Reef",
+  "code": "Wrt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.3,
+  "hidden": true,
+  "editorGroup": "water"
+ },
+ {
+  "id": "hills",
+  "name": "Hills",
+  "code": "Ht",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true,
+  "editorGroup": "rough"
+ },
+ {
+  "id": "swamp_water",
+  "name": "Swamp",
+  "code": "St",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": 0.4,
+  "hidden": true,
+  "editorGroup": "water"
+ },
+ {
+  "id": "shallow_water",
+  "name": "Shallow Water",
+  "code": "Wst",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "castle",
+  "name": "Castle",
+  "code": "Ct",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": true,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true,
+  "editorGroup": "castle"
+ },
+ {
+  "id": "mountains",
+  "name": "Mountains",
+  "code": "Mt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true,
+  "editorGroup": "rough"
+ },
+ {
+  "id": "deep_water",
+  "name": "Deep Water",
+  "code": "Wdt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "flat",
+  "name": "Flat",
+  "code": "Gt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "forest",
+  "name": "Forest",
+  "code": "Ft",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "frozen",
+  "name": "Frozen",
+  "code": "At",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "village",
+  "name": "Village",
+  "code": "Vt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "impassable",
+  "name": "Impassable",
+  "code": "Xt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "unwalkable",
+  "name": "Unwalkable",
+  "code": "Qt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "rails",
+  "name": "Rails",
+  "code": "Rt",
+  "isOverlay": false,
+  "aliasOf": [],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "regular_stone_floor_deprecated",
+  "name": "Stone Floor",
+  "code": "Irs",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "ancient_stone_floor_deprecated",
+  "name": "Stone Floor",
+  "code": "Ias",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "rug_floor_deprecated",
+  "name": "Rug",
+  "code": "Icr",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "rug2_floor_deprecated",
+  "name": "Rug",
+  "code": "Icn",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ },
+ {
+  "id": "old_wood_floor_deprecated",
+  "name": "Old Wooden Floor",
+  "code": "Ior",
+  "isOverlay": false,
+  "aliasOf": [
+   "Gt"
+  ],
+  "mvtAlias": [],
+  "defAlias": [],
+  "heals": null,
+  "givesIncome": false,
+  "recruitOnto": false,
+  "recruitFrom": false,
+  "submerge": null,
+  "hidden": true
+ }
+]
