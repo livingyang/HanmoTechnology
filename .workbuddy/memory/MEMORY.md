@@ -27,13 +27,15 @@
 
 ## 进行中：仓库 → 公司主页
 
-- ✅ Vue 3 + Vite + TS（已落地，website/ 22 文件，6 个 section + iframe 嵌入）
-- ✅ 主页构建实测通过（vue-tsc + vite v6.4.3，76KB JS + 8.5KB CSS）
-- ✅ DEMO-HOSTING v4.0（v3.1 的 Actions 路线被废，回归到本地构建 + Pages 内置部署）
-- ✅ HanmoIdleMMO v0.0.1 已并入 `docs/demos/HanmoIdleMMO/`（git 自动识别 rename，43 个文件保留历史）
-- ✅ v4.0 重构已 commit（`45d696b`，ahead of origin/main by 1，未 push）
-- ✅ `.github/workflows/pages.yml` 已删除（不再维护 Actions 工作流）
-- 待执行：用户手动 `git push origin main` → GitHub Pages 自动 Branch 部署 → 验证线上
+- ✅ Vue 3 + Vite + TS（已落地，website/ 6 个 section，DemoCard 改新窗口打开后无 iframe）
+- ✅ 主页构建实测通过（vue-tsc + vite，76KB JS + 8.5KB CSS，gzip 后 30KB）
+- ✅ DEMO-HOSTING v4.0（v3.1 的 Actions 路线被废，回归本地构建 + Pages 内置 Branch 部署）
+- ✅ 主页对外邮箱改为 hanmotech@agent.qq.com（commit d653ebe）
+- ✅ 主页去除所有 GitHub/源码入口（ContactSection / SiteFooter / Projects / Products）
+- ✅ 品牌图标落地：favicon.ico + apple-touch-icon + 透明 logo.png（mark 设计图派生）
+- ✅ manifest v3.0 schema 收尾：DEMO-HOSTING.md §3 拆为必填 9 / 可选 5 / 禁止 5
+  + validate-manifests.mjs 加 FORBIDDEN_FIELDS 检测（warning 不阻塞，ce11fd1）
+- 待 push：`ce11fd1` → 用户手动 `git push origin main` → Pages 自动 Branch 部署
 
 ## Web 试玩产品托管（DEMO-HOSTING v4.0）
 
@@ -53,9 +55,16 @@
 - 路径：`https://livingyang.github.io/HanmoTechnology/demos/<slug>/`（物理位置在 `docs/demos/<slug>/`）
 - 体积阈值：单产品 ≤ 100MB 完美；100-200MB 可接受；>200MB 不入库
 - Hub 校验脚本：`tools/validate-manifests.mjs`，commit 前手动跑扫 `docs/demos/*/manifest.json`，缺字段 exit 1
-- manifest schema：v3.0（不变）
+- manifest schema：v3.0，DEMO-HOSTING.md §3.1/§3.2/§3.3 拆为必填 9 / 可选 5 / 禁止 5
+  - 必填：schemaVersion / slug / name / nameEn / tagline / thumbnail / version / status / entry
+  - 可选：tags / updatedAt / embeddable / sandbox / description（embeddable/sandbox 已不消费，新 demo 可省略）
+  - 禁止：homepage / repository / repo / source / code（违反"主页禁源码"规则，commit 95114d8）
+  - validate-manifests.mjs 检测禁止字段：出现即 warning（不阻塞 commit）
 - **状态机**：独立开发者 demo 场景下所有产品 `status` 统一填 `alpha`；不要做 alpha/beta/released 多版本切换（用户明确否决，理由是 demo 仅展示个人能力）
-- 当前已注册产品：**HanmoIdleMMO（v0.0.1, alpha, 542KB，已并入 docs/demos/）**
+- 当前已注册产品（3 个）：
+  - **HanmoIdleMMO**（v0.0.1, alpha, 542KB）— 旗舰 Vue3+Vite 放置 MMO
+  - **HanmoArcomage**（v0.1.0, alpha）— Vue3+PlayCanvas 卡牌爬塔（韩文牌塔牌意背景，已改品牌"汉墨→汉末"）
+  - **HanmoWesnoth**（v0.1.0, alpha, 58.9MB）— Vue3+PlayCanvas 回合制战棋（GPL-2.0+ 衍生，含关于/许可区块）
 - `HanmoSekiro` 是 UE5 本地项目，**未规划 Web 版**，不要加进注册表
 
 ## website 构建踩过的坑（重要！下次少走弯路）
@@ -63,8 +72,9 @@
 - **`website/tsconfig.json` 的 `include` 必须含 `env.d.ts`**，否则 vite/client 类型不注入，`import.meta.env` 报 TS2339
 - **`public/` 资源用 `${import.meta.env.BASE_URL}<filename>`**，不要 `import` 也不要相对路径
 - **`website/.gitignore` 必须有**（`dist/`、`*.tsbuildinfo`、`.vite/`）；**`dist/` 始终不入库**——它是中间产物，`cp` 到 `docs/` 才是入库的发布根
-- **多行 commit message 用 `git commit -F file` + here-doc**，别在 `git commit -m "..."` 双引号里塞 `\n`（Windows bash 转义陷阱，字面 `\n` 会被写入 commit message）
+- **多行 commit message 用 `git commit -F file` + here-doc**，别在 `git commit -m "..."` 双引号里塞 `\n`（Windows bash 转义陷阱，字面 `\n` 会被写入 commit message）。**here-doc + `&&` 链混用**也容易 EOF 误截断——本轮第一次提交踩坑：临时文件里末尾被混入了 `git commit -F ... && rm ...` 字面命令。正确做法：先用 Write 工具写临时文件，再单独跑 `git commit -F tmpfile`，**不要写在 `cat > tmp <<EOF && git commit` 一行里**
 - **YAML 工作流文件不能用 build 通过来推断合法**——pages.yml 那次本地 build 通过但 Pages 红，是因为 YAML 缩进错。改完任何工作流 / YAML 都用解析器（`python -c "import yaml; yaml.safe_load(...)"`）跑一遍
+- **AI commit message 应与 git diff 一致**：commit 写"改了 A/B/C"时，提交前必须 git diff 核对每条都真改过。HanmoWesnoth AI 的 ab05617 写"汉墨→汉末"但 products.json 漏改 → 主页 /play 卡片对外显示"汉墨牌塔"，manifest 写"汉末牌塔"，品牌不一致
 
 ## 用户偏好（值得记住）
 
