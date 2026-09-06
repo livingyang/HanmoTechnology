@@ -18,5 +18,5 @@
   "embeddable": true,
   "sandbox": "allow-scripts allow-same-origin",
   "entry": "index.html",
-  "updatedAt": "2026-09-05"
+  "updatedAt": "2026-09-06"
 }
