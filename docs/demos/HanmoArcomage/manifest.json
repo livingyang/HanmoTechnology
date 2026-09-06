@@ -7,8 +7,13 @@
   "thumbnail": "thumbnail.svg",
   "version": "0.1.0",
   "status": "alpha",
-  "tags": ["card", "roguelike", "vue3", "playcanvas", "卡牌"],
-  "homepage": "https://github.com/livingyang/HanmoArcomage",
+  "tags": [
+    "card",
+    "roguelike",
+    "vue3",
+    "playcanvas",
+    "卡牌"
+  ],
   "embeddable": true,
   "sandbox": "allow-scripts allow-same-origin",
   "entry": "index.html",

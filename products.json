@@ -30,7 +30,6 @@
       "version": "0.1.0",
       "embeddable": true,
       "sandbox": "allow-scripts allow-same-origin",
-      "homepage": "https://github.com/livingyang/HanmoArcomage",
       "addedAt": "2026-09-05",
       "order": 20
     },
@@ -47,7 +46,6 @@
       "version": "0.1.0",
       "embeddable": true,
       "sandbox": "allow-scripts allow-same-origin",
-      "homepage": "https://github.com/livingyang/HanmoWesnoth",
       "addedAt": "2026-09-05",
       "order": 30
     }

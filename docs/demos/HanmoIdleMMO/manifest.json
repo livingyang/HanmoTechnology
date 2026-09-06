@@ -7,8 +7,12 @@
   "thumbnail": "thumbnail.svg",
   "version": "0.0.1",
   "status": "alpha",
-  "tags": ["idle", "mmo", "vue3", "放置"],
-  "homepage": "https://github.com/livingyang/HanmoIdleMMO",
+  "tags": [
+    "idle",
+    "mmo",
+    "vue3",
+    "放置"
+  ],
   "embeddable": true,
   "sandbox": "allow-scripts allow-same-origin",
   "entry": "index.html",

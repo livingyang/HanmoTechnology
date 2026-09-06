@@ -14,7 +14,6 @@
     "playcanvas",
     "战棋"
   ],
-  "homepage": "https://github.com/livingyang/HanmoWesnoth",
   "embeddable": true,
   "sandbox": "allow-scripts allow-same-origin",
   "entry": "index.html",

@@ -9,7 +9,8 @@
 //  - slug 字段必须等于目录名
 //  - status 必须是 alpha/beta/released/archived
 //  - 禁止字段：homepage / repository / repo / source / code（违反"主页禁源码"规则）
-//    出现即 warning（不阻塞 commit，但提示违反 DEMO-HOSTING.md §3.3）
+//    出现即 [ERR]，exit 1 阻塞 commit——必须从 manifest.json 里删除后重跑。
+//    修复方法：直接编辑 docs/demos/<slug>/manifest.json，删掉对应行。
 //  - thumbnail 文件必须存在
 //  - entry 文件必须存在
 // 失败 → exit 1，阻塞本地构建产物提交（commit 时跑一次即可）。
@@ -122,11 +123,12 @@ for (const slug of slugs) {
   }
 
   // 禁止字段（违反"主页禁源码"规则，参见 DEMO-HOSTING.md §3.3）
-  // 不阻塞 commit，仅 warning，下次同步清理时移除
+  // 升级为 [ERR]：commit 前必须清理，warn 永远没人看
+  // 修复：编辑 docs/demos/<slug>/manifest.json，删除对应字段后重跑
   for (const f of FORBIDDEN_FIELDS) {
     if (manifest[f] !== undefined && manifest[f] !== null) {
-      console.warn(`  [WARN] forbidden field "${f}"=…（违反"主页禁源码"规则，参见 DEMO-HOSTING.md §3.3；下次同步时移除）`);
-      warnings++;
+      console.error(`  [ERR] forbidden field "${f}"=…（违反"主页禁源码"规则，参见 DEMO-HOSTING.md §3.3；修复：删除该字段后重跑）`);
+      errors++;
     }
   }
 
