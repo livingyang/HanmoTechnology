@@ -30,6 +30,11 @@ build/Release
 node_modules
 jspm_packages
 
+# Hub 仓临时暂存：AI 在产品仓跑完 §9.6.1 后 cp 到此处，
+# 用户跑 tools/publish-demo-release.ps1 上传 release 完即可删除 zip。
+# 只忽略 zip 本身，README.md + .gitkeep 仍可入库。
+temp/**/*.zip
+
 # Optional npm cache directory
 .npm
 
