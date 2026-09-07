@@ -37,10 +37,12 @@
   + validate-manifests.mjs 加 FORBIDDEN_FIELDS 检测，f0989ce 升级为 [ERR] 阻塞 commit
 - ✅ 主页所有 homepage 残留清零：products.json + 3 个 manifest（f0989ce）
 - ✅ DEMO-HOSTING v4.1：增加 §9 离线包交付（Electron zip 解压即玩，commit 5aa5b49）
-  - docs/demos/<slug>/downloads/<HanmoXxx-v0.x.y-win.zip> 存放 zip
-  - manifest + products.json 各加 downloads 数组（os/url/size/updatedAt）
+  - **主路线 = 官网仓 Release**（932b90c pivot）：产品 zip 实际 288MB > git 单文件 100 MiB 硬限，
+    且产品仓 private（匿名 API 404 验证），只能挂官网仓 HanmoTechnology（public）的 Releases
+  - downloads[].url 支持两种写法：external（Release 完整链接）/ 相对路径（docs/ 小 zip 备选）
   - DemoCard v-for 渲染 .btn-secondary 下载按钮，downloads 缺省时 0 回归
-- 待 push：`5aa5b49` → 用户手动 `git push origin main` → Pages 自动 Branch 部署
+  - 上传 release 由用户手动（沙箱 gh 不可用 + 无 token）；AI 只写 downloads[] + 重建主页
+- 待 push：`932b90c` → 用户手动 `git push origin main` → Pages 自动 Branch 部署
   （ahead of origin/main by 4 commits：f0989ce + b68d550 + f558865 + 5aa5b49）
 
 ## Web 试玩产品托管（DEMO-HOSTING v4.0）
