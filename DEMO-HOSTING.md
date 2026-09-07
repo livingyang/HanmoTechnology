@@ -302,34 +302,43 @@ git push origin main
 
 > 本节是**产品仓 AI 跨仓自动化的入口规则**。
 > Wesnoth / IdleMMO / 未来产品仓的 AI 接到"发布 zip"指令时，**先读此节**再动手。
+>
+> 详细端到端工作流见 **§9.8（AI 一次跑完）**。
 
-两仓同根目录（用户工作空间 `C:\developer\hanmo\`）的前提下，4 步发布流程的职责切分：
+两仓同根目录（用户工作空间 `C:\developer\hanmo\`）的前提下，发布流程的职责切分：
 
-| 步骤 | 章节 | 谁做 | 在哪 |
-|---|---|---|---|
-| ① 仓内打包 zip | §9.6.1 | **AI·产品仓** | 产品仓根目录 |
-| ② 把 zip 上传到 Hub 仓 Release | §9.6.2 | **你手动** | Hub 仓 `tools/publish-demo-release.ps1` 或浏览器 |
-| ③ 写 manifest.json + products.json | §9.6.3 | **AI·Hub 仓** | Hub 仓根目录（AI 可 `cd ../HanmoTechnology` 跨仓） |
-| ④ 重建主页 | §9.6.4 | **AI·Hub 仓** | Hub 仓根目录 |
-| ⑤ `git push` | — | **你手动** | 任意 |
+| 步骤 | 谁做 | 在哪 |
+|---|---|---|
+| ① AI 一次跑完：仓内打包 zip + cp 到 `temp/` + 写 downloads[] + rebuild 主页 + commit | **AI 一次跑完** | 产品仓 + Hub 仓（跨仓） |
+| ② 上传 zip 到 Hub 仓 Release | **你手动** | 真实 PowerShell（沙箱内 gh 不可用） |
+| ③ `git push origin main` | **你手动** | Hub 仓 |
 
 **AI 不可触越的边界**（即便同根目录也不允许）：
 
-- ❌ **不要跨仓调 `gh release create`** —— AI 沙箱内无 token + `gh` 不在 PATH + HTTPS 受限。§9.6.2 必须由你执行。
+- ❌ **不要跨仓调 `gh release create`** —— AI 沙箱内无 token + `gh` 不在 PATH + HTTPS 受限。`gh` 这一步永远必须由你执行。
 - ❌ **不要在产品仓内写 manifest / publish / Hub 相关脚本** —— 违反产品仓零侵入原则。
 - ❌ **永远不要 `git push`** —— 全 session 一律由你手动。
 
-**§9.6.1 完成后的标准交付物**（AI 必须把这一段交给你再停手）：
+**AI 跑完 ① 后的标准交付物**（AI 必须把这一段交给你再停手）：
 
 ```
-zip 绝对路径 : <产品仓>/HanmoXxx-v0.x.y-win.zip
-zip 字节数   : <size>
-建议 tag    : v0.x.y
-建议命令    : cd C:/developer/hanmo/HanmoTechnology
-              .\tools\publish-demo-release.ps1 -Tag v0.x.y -ZipPath <上面> -Slug HanmoXxx
+=== §9.8 AI 自动化工作流已跑完，请依次执行以下两步 ===
+
+# 1) 上传 release（你的真实 PowerShell 环境）
+cd C:\developer\hanmo\HanmoTechnology
+.\tools\publish-demo-release.ps1 `
+    -Tag v0.x.y `
+    -ZipPath temp/HanmoXxx/v0.x.y/HanmoXxx-v0.x.y-win.zip `
+    -Slug HanmoXxx
+
+# 2) 推送 Hub 仓（触发 Pages 自动部署）
+cd C:\developer\hanmo\HanmoTechnology
+git push origin main
+
+=== 完成后主页「📦 下载 Win 版」按钮立即生效 ===
 ```
 
-你跑完 §9.6.2 拿到 release URL 后，把 URL 发回给 AI，AI 继续接手 §9.6.3 / §9.6.4（写字段 + 重建主页），最后在 Hub 仓本地 commit（**不 push**——等你 push）。
+详细流程见 §9.8。
 
 ### 9.1 形态
 
@@ -559,7 +568,133 @@ https://github.com/livingyang/HanmoTechnology/releases/download/v0.x.y/HanmoXxx-
 > 注意：cross-origin 链接（Release 的 `https://github.com/...`）标签上的 `download`
 > 属性会被浏览器忽略——但对 zip 这种二进制，浏览器默认"直接下载"，等效可接受。
 
-### 9.8 校验扩展
+### 9.8 端到端 AI 自动化工作流（一次跑完）
+
+> 适用：产品仓 AI（如 Wesnoth AI、IdleMMO AI）拿到"发布 zip"指令时按本节执行。
+> 设计前提：用户工作空间 `C:\developer\hanmo\` 下产品仓 + Hub 仓**同根目录**，
+> AI 在产品仓上下文可 `cd ../HanmoTechnology` 跨仓操作 Hub 仓文件。
+>
+> **AI 一次跑完全部 ①-⑤ 步**（zip 打包 + temp 暂存 + downloads 字段 + rebuild + commit），
+> 只把 `gh release create` + `git push` 留给你手动。
+
+#### 9.8.1 工作流（AI 视角伪代码）
+
+```bash
+# ===== 在产品仓内 =====
+cd <产品仓>                          # 例: cd ../HanmoWesnoth
+git pull                             # 拉最新代码
+npm install                           # electron-builder 首次需要
+npm run dist:dir                      # → dist/win-unpacked/
+
+# 打成 zip（不卷 dist/ 本身）
+cd dist
+powershell -NoProfile -Command "Compress-Archive -Path 'win-unpacked' -DestinationPath '../HanmoXxx-v0.x.y-win.zip' -Force"
+cd ..
+ZIP_PATH="$(pwd)/HanmoXxx-v0.x.y-win.zip"
+ZIP_SIZE=$(stat -c %s "$ZIP_PATH")   # Git Bash 下取字节数
+TAG="v0.x.y"
+SLUG="HanmoXxx"
+
+# ===== 跨仓到 Hub 仓 =====
+HUB="C:/developer/hanmo/HanmoTechnology"
+mkdir -p "$HUB/temp/$SLUG/$TAG"
+cp "$ZIP_PATH" "$HUB/temp/$SLUG/$TAG/"
+
+# ===== 在 Hub 仓内 =====
+cd "$HUB"
+
+# 1) 写 products.json 的 downloads[]
+python -c "
+import json
+with open('products.json', encoding='utf-8') as f: data = json.load(f)
+for p in data['products']:
+    if p['slug'] == '$SLUG':
+        p['downloads'] = [{
+            'os': 'win',
+            'url': 'https://github.com/livingyang/HanmoTechnology/releases/download/$TAG/$SLUG-$TAG-win.zip',
+            'size': $ZIP_SIZE,
+            'updatedAt': '$(date +%Y-%m-%d)'
+        }]
+        break
+with open('products.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2); f.write('\n')
+"
+
+# 2) 写 docs/demos/<slug>/manifest.json 的 downloads[]
+python -c "
+import json
+p = 'docs/demos/$SLUG/manifest.json'
+with open(p, encoding='utf-8') as f: data = json.load(f)
+data['downloads'] = [{
+    'os': 'win',
+    'url': 'https://github.com/livingyang/HanmoTechnology/releases/download/$TAG/$SLUG-$TAG-win.zip',
+    'size': $ZIP_SIZE,
+    'updatedAt': '$(date +%Y-%m-%d)'
+}]
+with open(p, 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2); f.write('\n')
+"
+
+# 3) Rebuild 主页
+cd website && npm run build
+cd ..
+cp -r website/dist/. docs/
+
+# 4) 跑 validate
+node tools/validate-manifests.mjs    # 期望: 0 ERR
+
+# 5) Hub 仓本地 commit（不 push）
+git add -A
+git commit -m "feat(<HanmoXxx> v0.x.y): 离线包交付通道"
+
+# ===== 交付物输出给用户 =====
+echo "=== §9.8 AI 自动化工作流已跑完，请依次执行以下两步 ==="
+echo ""
+echo "# 1) 上传 release（你的真实 PowerShell 环境，沙箱内 gh 不可用）"
+echo "cd C:\\\\developer\\\\hanmo\\\\HanmoTechnology"
+echo ".\\\\tools\\\\publish-demo-release.ps1 \`"
+echo "    -Tag $TAG \`"
+echo "    -ZipPath temp/$SLUG/$TAG/$SLUG-$TAG-win.zip \`"
+echo "    -Slug $SLUG"
+echo ""
+echo "# 2) 推送 Hub 仓（触发 Pages 自动部署）"
+echo "cd C:\\\\developer\\\\hanmo\\\\HanmoTechnology"
+echo "git push origin main"
+echo ""
+echo "=== 完成后主页「📦 下载 Win 版」按钮立即生效 ==="
+```
+
+#### 9.8.2 关键设计决策
+
+| 决策 | 理由 |
+|---|---|
+| `downloads[].url` 预填期望 release URL | 用户跑完 release 后**按钮立刻可用**——避免"先 release 后回填 url"的两段式 |
+| `temp/<slug>/<v>/` 暂存 zip | 不入 git（`.gitignore` 已加 `temp/**/*.zip`），physical 位置在 Hub 仓 AI 跨仓可写 |
+| 不在 `temp/<slug>/<v>/` 下生成新 publish.ps1 | 复用 `tools/publish-demo-release.ps1` 一份统一脚本，避免每产品每版本散乱维护 |
+| 主页 rebuild 一次 | downloads[] 字段 + DemoCard 模板配合，url 是 external URL 直接用 |
+| validate 必须 0 ERR | 阻塞 commit，发现配置错误立即报 |
+| **不 push** | push 一律用户手动（v4.0 原则） |
+
+#### 9.8.3 AI 提示词模板（产品仓 AI 拿到发布指令时可直接用）
+
+```markdown
+请按 https://github.com/livingyang/HanmoTechnology/blob/main/DEMO-HOSTING.md §9.8
+执行「端到端 AI 自动化工作流」。
+
+输入参数（请替换）：
+- SLUG: HanmoWesnoth
+- TAG: v0.x.y
+- 产品仓本地路径: C:/developer/hanmo/HanmoWesnoth
+- Hub 仓本地路径: C:/developer/hanmo/HanmoTechnology
+
+约束：
+- 不要跨仓调 `gh release create`（沙箱内 gh 不可用、无 token）
+- 不要在产品仓内写 manifest / publish / Hub 相关脚本
+- 不要 `git push`
+- 跑完按 §9.0 末尾「标准交付物」格式输出给用户
+```
+
+### 9.9 校验扩展
 
 `tools/validate-manifests.mjs` 在原校验基础上加：
 
