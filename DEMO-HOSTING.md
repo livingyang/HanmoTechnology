@@ -5,7 +5,7 @@
 
 | | |
 |---|---|
-| **版本** | 4.1（v4.0 + §9 离线包交付：Electron zip 落地本地下载） |
+| **版本** | 4.2（v4.1 + §9 走官网仓 Release + `tools/publish-demo-release.ps1` 发布脚本） |
 | **生效日期** | 2026-09-05 |
 | **线上地址** | `https://livingyang.github.io/HanmoTechnology/demos/<slug>/` |
 | **Hub 仓** | `github.com/livingyang/HanmoTechnology` |
@@ -322,6 +322,9 @@ powershell -NoProfile -Command "Compress-Archive -Path 'win-unpacked' -Destinati
 也可以用 7-Zip：`7z a -tzip -mx=5 HanmoXxx-v0.x.y-win.zip win-unpacked/`
 （`Compress-Archive` 兼容性最稳，体积略大；7z 体积更优但需先装。）
 
+> 📌 完整"打包 → 上传 → 填下载字段"的实操命令，见
+> **`tools/README-publish-release.md`**（含 gh CLI 安装、token 配置、日常发布、清理命令）。
+
 ### 9.2 命名规范
 
 `<slug>-v<version>-<os>.zip`
@@ -445,8 +448,30 @@ cd ..
 
 #### 9.6.2 [你·手动] 上传 zip 到官网仓 Release
 
-> 在浏览器打开官网仓 `https://github.com/livingyang/HanmoTechnology/releases`，
-> 点 **Draft a new release**，填：
+> 真实文件约 288MB，无法 git push，只能走官网仓 Release。
+> 你的本机已有 `gh` CLI 且已 `gh auth login`，**推荐直接用 `tools/publish-demo-release.ps1`（一条命令）**。
+
+**方式 A（推荐）—— 用 `tools/publish-demo-release.ps1` 脚本**
+
+在 PowerShell 窗口执行：
+
+```powershell
+cd C:/developer/hanmo/HanmoTechnology
+.\tools\publish-demo-release.ps1 `
+    -Tag v0.0.3 `
+    -ZipPath C:/build/HanmoIdleMMO-v0.0.3-win.zip `
+    -Slug HanmoIdleMMO
+```
+
+- 输入 `y` 确认 → 自动 `gh release create` + 上传 zip → 打印 release URL + 可直接复制的 JSON
+- 想先核对再发布：加 `-Draft`，确认无误后 `gh release edit v0.0.3 --draft=false` 取消草稿
+- tag 已存在想重发：加 `-Replace`（先删同名 release + tag）
+
+脚本前置检查：gh 在 PATH、已认证（全过了）、zip 文件存在。三者任一不满足会 `[ERR]` + exit 1 退出，不会误发。
+
+**方式 B（备选）—— 浏览器拖拽**
+
+打开 `https://github.com/livingyang/HanmoTechnology/releases` → **Draft a new release**，填：
 
 | 项 | 值 |
 |---|---|
@@ -454,21 +479,25 @@ cd ..
 | Release title | `HanmoXxx v0.x.y`（可留空用 tag） |
 | Attach binaries | 拖入 `HanmoXxx-v0.x.y-win.zip` |
 
+**方式 C（等价裸命令）**——不想用脚本时：
+
+```bash
+gh release create v0.x.y HanmoXxx-v0.x.y-win.zip \
+  --repo livingyang/HanmoTechnology --title "HanmoXxx v0.x.y"
+```
+
 上传完成后，复制该 asset 的下载链接，格式：
 
 ```
 https://github.com/livingyang/HanmoTechnology/releases/download/v0.x.y/HanmoXxx-v0.x.y-win.zip
 ```
 
-> 或用 GitHub CLI（本地有 gh + 已登录时）：
-> ```bash
-> gh release create v0.x.y HanmoXxx-v0.x.y-win.zip \
->   --repo livingyang/HanmoTechnology --title "HanmoXxx v0.x.y"
-> ```
-
 #### 9.6.3 [AI·Hub仓] 同步更新 manifest.json + products.json
 
 给两份文件各加 `downloads` 数组，`url` 填第 9.6.2 步复制的完整 external URL：
+
+> 💡 **若用 `publish-demo-release.ps1`（方式 A）**，脚本跑完已经打印好这段 JSON，可直接复制。
+> 若不慎丢失，按下模板手动填（`size` = zip 字节数，`(Get-Item <file>).Length` 取）。
 
 ```json
 "downloads": [
@@ -527,14 +556,17 @@ Hub 仓（HanmoTechnology）
 │       │   ├── manifest.json
 │       │   ├── thumbnail.svg
 │       │   ├── assets/...              ← Web 产物
-│       │   └── downloads/              ← 离线包（Electron zip，详见 §9）
+│       │   └── downloads/              ← 【备选】小 zip 同仓（<100MB 才用；主路线走 Release）
 │       │       └── HanmoIdleMMO-v0.x.y-win.zip
 │       └── HanmoXXX/...
 ├── products.json                      ← 产品注册表，主页 /play 板块消费
 ├── website/                           ← 主页工程（Vue3 + Vite + TS，源码）
 │   ├── src/...
 │   └── package.json
-├── tools/validate-manifests.mjs       ← 本地 commit 前手动跑
+├── tools/
+│   ├── validate-manifests.mjs         ← 本地 commit 前手动跑（manifest + downloads 校验）
+│   ├── publish-demo-release.ps1       ← 发布 zip 到官网仓 Release（一行命令）
+│   └── README-publish-release.md      ← gh CLI / token / 发布 / 清理 实操
 ├── DEMO-HOSTING.md                    ← 本文件
 └── COMPANY.md                         ← 公司资料
 ```
