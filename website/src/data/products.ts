@@ -10,6 +10,21 @@
 
 import productsJson from '../../../products.json'
 
+/**
+ * 单个离线包条目（Electron zip / 未来其他平台）
+ * 对应规范：DEMO-HOSTING.md §9.5
+ */
+export interface ProductDownload {
+  /** 目标平台 */
+  os: 'win' | 'mac' | 'linux'
+  /** zip 文件相对 demo 产物目录的路径，如 "downloads/HanmoXxx-v0.x.y-win.zip" */
+  url: string
+  /** zip 字节数（正整数），用于按钮显示 "XXX MB" */
+  size: number
+  /** 打包日期 YYYY-MM-DD（可选） */
+  updatedAt?: string
+}
+
 export interface ProductEntry {
   /** slug：产品英文 ID */
   slug: string
@@ -43,6 +58,8 @@ export interface ProductEntry {
   addedAt?: string
   /** 最近更新日期 */
   updatedAt?: string
+  /** 离线包清单（Electron zip 等），无则不渲染下载按钮 */
+  downloads?: ProductDownload[]
 }
 
 export interface ProductsRegistry {
@@ -66,4 +83,26 @@ export function demoSrc(entry: string): string {
  */
 export function demoThumbSrc(thumbnail: string): string {
   return `${import.meta.env.BASE_URL}${thumbnail}`
+}
+
+/**
+ * 计算离线包下载链接：entry 末尾有斜杠，url 以 downloads/ 开头，直接拼
+ * 例：entry="demos/HanmoIdleMMO/" + url="downloads/HanmoIdleMMO-v0.0.3-win.zip"
+ *   → /HanmoTechnology/demos/HanmoIdleMMO/downloads/HanmoIdleMMO-v0.0.3-win.zip
+ */
+export function demoDownloadSrc(entry: string, url: string): string {
+  return `${import.meta.env.BASE_URL}${entry}${url}`
+}
+
+/** 把字节数格式化为 "XXX MB" / "X.X GB" */
+export function formatSize(bytes: number): string {
+  if (!Number.isFinite(bytes) || bytes <= 0) return '? MB'
+  if (bytes < 1024 ** 2) return `${Math.round(bytes / 1024)} KB`
+  if (bytes < 1024 ** 3) return `${(bytes / 1024 ** 2).toFixed(0)} MB`
+  return `${(bytes / 1024 ** 3).toFixed(1)} GB`
+}
+
+/** 平台名 → 中文/英文显示标签 */
+export function osLabel(os: ProductDownload['os']): string {
+  return { win: 'Win', mac: 'Mac', linux: 'Linux' }[os] ?? os
 }

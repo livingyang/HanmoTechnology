@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { ProductEntry } from '../data/products'
-import { demoSrc, demoThumbSrc } from '../data/products'
+import { demoSrc, demoThumbSrc, demoDownloadSrc, formatSize, osLabel } from '../data/products'
 
 const props = defineProps<{
   product: ProductEntry
@@ -45,6 +45,16 @@ const imgError = ref(false)
           rel="noopener"
         >
           ▶ 直接试玩
+        </a>
+        <a
+          v-for="d in props.product.downloads"
+          :key="`${d.os}-${d.url}`"
+          class="btn btn-secondary"
+          :href="demoDownloadSrc(props.product.entry, d.url)"
+          :download="d.url.split('/').pop()"
+          :title="`下载 ${d.url}（${formatSize(d.size)}）`"
+        >
+          📦 下载 {{ osLabel(d.os) }} 版 · {{ formatSize(d.size) }}
         </a>
       </div>
     </div>

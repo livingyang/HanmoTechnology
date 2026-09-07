@@ -5,7 +5,7 @@
 
 | | |
 |---|---|
-| **版本** | 4.0（合并到 docs/，去掉 GitHub Actions，本地构建 + Pages 内置 Branch 部署） |
+| **版本** | 4.1（v4.0 + §9 离线包交付：Electron zip 落地本地下载） |
 | **生效日期** | 2026-09-05 |
 | **线上地址** | `https://livingyang.github.io/HanmoTechnology/demos/<slug>/` |
 | **Hub 仓** | `github.com/livingyang/HanmoTechnology` |
@@ -80,7 +80,7 @@ base: '/HanmoTechnology/demos/<slug>/'
 | `status` | string | 必须是 `alpha` / `beta` / `released` / `archived` 之一。**独立开发者 demo 站统一填 `alpha`**，不做多版本切换 |
 | `entry` | string | 入口 HTML 文件名（**相对 demo 产物目录**），如 `"index.html"`；文件必须存在 |
 
-### 3.2 可选字段（5 个）
+### 3.2 可选字段（6 个）
 
 | 字段 | 类型 | 说明 |
 |---|---|---|
@@ -89,6 +89,7 @@ base: '/HanmoTechnology/demos/<slug>/'
 | `embeddable` | boolean | 是否可被主页 iframe 内嵌。**当前 DemoCard 改为新窗口打开后已不消费**，可省略 |
 | `sandbox` | string | iframe sandbox 字符串。**同上，已不消费**，可省略 |
 | `description` | string | 较 `tagline` 更长的描述（暂未在主页展示） |
+| `downloads` | object[] | **离线包清单**（Electron zip / 未来其他平台），见 §9。每个对象含 `os` / `url` / `size` / `updatedAt` 四个键 |
 
 > 旧 manifest 里残留的 `embeddable` / `sandbox` 暂不清（向后兼容，新 demo 不再需要）。Hub 维护 `products.json` 时也不用再写这两个字段。
 
@@ -243,6 +244,9 @@ git push origin main
 
 ## 5. 体积策略
 
+> 适用于 Web 产物（`docs/demos/<slug>/` 下的 `index.html` / `assets/`）。
+> Electron zip 离线包的红线稍宽，详见 §9.4。
+
 | 单产物大小 | 处理 |
 |---|---|
 | ≤ 100 MB | ✅ 直接 `cp -r` |
@@ -289,6 +293,172 @@ git push origin main
 
 ---
 
+## 9. 离线包交付（Electron zip）
+
+> Web 试玩始终是首选（v4.0 拓扑），本节是**额外**的离线交付通道——
+> 用户在线试玩后可下载 zip 到本地解压游玩，无需联网、无需安装。
+
+### 9.1 形态
+
+**win-unpacked 目录 → zip 压缩**（解压即玩，符合"下载后本地解压游玩"原话）。
+
+```
+dist/                                ← 产品仓 `npm run dist:dir` 产出
+├── win-unpacked/
+│   ├── HanmoIdleMMO.exe             ← 入口
+│   ├── resources/app.asar           ← 应用代码
+│   ├── ...（chromium runtime 依赖）  ← 通常 100-200 MB
+```
+
+打 zip 命令（在产品仓根目录）：
+
+```bash
+# 进入 unpacked 目录上一层，把整个 win-unpacked 压成 zip
+cd <产品仓>/dist
+# Windows 10+ 自带 Compress-Archive，跨平台最稳
+powershell -NoProfile -Command "Compress-Archive -Path 'win-unpacked' -DestinationPath '../HanmoXxx-v0.x.y-win.zip' -Force"
+```
+
+也可以用 7-Zip：`7z a -tzip -mx=5 HanmoXxx-v0.x.y-win.zip win-unpacked/`
+（`Compress-Archive` 兼容性最稳，体积略大；7z 体积更优但需先装。）
+
+### 9.2 命名规范
+
+`<slug>-v<version>-<os>.zip`
+
+示例：
+- `HanmoIdleMMO-v0.0.3-win.zip`
+- `HanmoArcomage-v0.2.0-win.zip`
+- `HanmoWesnoth-v0.1.0-win.zip`
+
+> 当前产品仓都是 `electron-builder --win`，仅 Windows。将来加 Mac / Linux 走 `HanmoXxx-v0.x.y-mac.zip` / `HanmoXxx-v0.x.y-linux.zip` 命名，schema 不变。
+
+### 9.3 目录结构
+
+```
+docs/demos/<slug>/
+├── index.html
+├── manifest.json
+├── thumbnail.svg
+├── assets/...                       ← Web 产物
+└── downloads/                       ← 离线包集中点
+    └── HanmoXxx-v0.x.y-win.zip
+```
+
+- `downloads/` 与 `index.html` **同级**——表明 zip 是该 demo 的"附属资产"，不是另一个 web 入口
+- 文件名带版本号 → 同一 demo 多个历史版本可并存（暂不强制清理旧版）
+
+### 9.4 体积红线
+
+> 复用 §5 的"200MB 不入库"红线，但离线包稍宽（chromium runtime 占大头是合理的）：
+
+| 单 zip 大小 | 处理 |
+|---|---|
+| ≤ 200 MB | ✅ 塞 `docs/demos/<slug>/downloads/`，与 Web 产物同仓 |
+| > 200 MB | ❌ 不入库；改走 GitHub Release（`HanmoXxx` 仓 Releases 页面），主页按钮指向 release URL |
+
+zip 通常 100-200 MB，落在第一档。HanmoWesnoth（web 58.9 MB）打包后预计 130-180 MB，OK。
+
+### 9.5 manifest / products.json 字段
+
+`downloads` 数组，每项对象结构：
+
+| 键 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `os` | string | ✓ | `win` / `mac` / `linux` |
+| `url` | string | ✓ | zip 相对路径，**相对 demo 产物目录**，如 `"downloads/HanmoIdleMMO-v0.0.3-win.zip"`。**不含 `docs/` 前缀**，URL 拼装规则与 `entry` / `thumbnail` 一致 |
+| `size` | number | ✓ | zip 字节数（int），主页渲染 `XXX MB` 用 |
+| `updatedAt` | string | × | 此 zip 打包日期，`YYYY-MM-DD` |
+
+manifest 示例：
+
+```json
+{
+  "schemaVersion": "3.0",
+  "slug": "HanmoIdleMMO",
+  "name": "汉末放置 MMO",
+  "nameEn": "Hanmo Idle MMO",
+  "tagline": "放置类 MMO 单机版",
+  "thumbnail": "thumbnail.svg",
+  "version": "0.0.3",
+  "status": "alpha",
+  "entry": "index.html",
+  "tags": ["idle", "mmo", "vue3"],
+  "updatedAt": "2026-09-07",
+  "downloads": [
+    {
+      "os": "win",
+      "url": "downloads/HanmoIdleMMO-v0.0.3-win.zip",
+      "size": 156789012,
+      "updatedAt": "2026-09-07"
+    }
+  ]
+}
+```
+
+products.json 同步在对应 product 对象下加 `downloads`（结构同 manifest）。`size` 可用 `(Get-Item <file>).Length` 取。
+
+### 9.6 一次性离线包发布流程
+
+> 与 §4 Web 发布流程并行；如同时更新 Web + 离线包，按 §4.1 → §9.6.1 → §4.2 → §9.6.2 → §4.3 → §4.4 顺序。
+
+#### 9.6.1 [AI·产品仓] build Electron + 打包 zip
+
+```bash
+cd <产品仓>
+git pull
+npm install                          # electron-builder 第一次需要
+npm run dist:dir                     # 输出到 dist/win-unpacked/
+# zip 打包
+cd dist
+powershell -NoProfile -Command "Compress-Archive -Path 'win-unpacked' -DestinationPath '../HanmoXxx-v0.x.y-win.zip' -Force"
+cd ..
+```
+
+#### 9.6.2 [AI·Hub仓] 复制 zip 到 downloads/
+
+```bash
+HUB=<Hub 仓绝对路径>
+SLUG=HanmoIdleMMO
+PRODUCT_ZIP=<产品仓路径>/HanmoXxx-v0.x.y-win.zip
+
+mkdir -p $HUB/docs/demos/$SLUG/downloads
+cp $PRODUCT_ZIP $HUB/docs/demos/$SLUG/downloads/
+```
+
+#### 9.6.3 [AI·Hub仓] 同步更新 manifest.json + products.json
+
+分别给两份文件加 `downloads` 数组。size 用：
+
+```bash
+SIZE=$(stat -c %s $HUB/docs/demos/$SLUG/downloads/HanmoXxx-v0.x.y-win.zip)
+echo $SIZE
+```
+
+Windows Git Bash 下用 `wc -c < <file>` 兼容。
+
+然后跑 §4.4 重建主页（DemoCard 自动识别 `downloads` 字段，按需渲染下载按钮）。
+
+### 9.7 主页按钮行为
+
+- **当前 DemoCard**：试玩按钮（`▶ 直接试玩`，新窗口打开 web 版）
+- **新增**：当 `downloads.length > 0` 时，下方多渲染一行次要按钮：
+  - Win 包：`📦 下载 Win 版 · 156 MB`（`<a href="${entry}${downloads[0].url}" download>`）
+- **无 downloads 时**：按钮不渲染，主页表现与 v4.0 完全一致（**无破坏性**）
+
+### 9.8 校验扩展
+
+`tools/validate-manifests.mjs` 在原校验基础上加：
+
+- 若 `downloads` 存在，每项必填 `os` / `url` / `size`，否则 `[ERR]`
+- `os` 必须是 `win` / `mac` / `linux` 之一，否则 `[ERR]`
+- `url` 指向的文件必须物理存在（`existsSync(slugDir/<url>)`），否则 `[ERR]`
+- products.json 同步校验（可选：同样遍历 products[].downloads）
+
+> 当前 3 个 manifest 都没有 `downloads` 字段，**新逻辑对存量无影响**——脚本只在字段存在时校验，不存在则跳过。
+
+---
+
 ## 10. 目录速查
 
 ```
@@ -302,7 +472,9 @@ Hub 仓（HanmoTechnology）
 │       │   ├── index.html
 │       │   ├── manifest.json
 │       │   ├── thumbnail.svg
-│       │   └── assets/...
+│       │   ├── assets/...              ← Web 产物
+│       │   └── downloads/              ← 离线包（Electron zip，详见 §9）
+│       │       └── HanmoIdleMMO-v0.x.y-win.zip
 │       └── HanmoXXX/...
 ├── products.json                      ← 产品注册表，主页 /play 板块消费
 ├── website/                           ← 主页工程（Vue3 + Vite + TS，源码）

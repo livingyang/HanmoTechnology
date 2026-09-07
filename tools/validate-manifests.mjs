@@ -11,8 +11,9 @@
 //  - 禁止字段：homepage / repository / repo / source / code（违反"主页禁源码"规则）
 //    出现即 [ERR]，exit 1 阻塞 commit——必须从 manifest.json 里删除后重跑。
 //    修复方法：直接编辑 docs/demos/<slug>/manifest.json，删掉对应行。
-//  - thumbnail 文件必须存在
-//  - entry 文件必须存在
+//  - thumbnail / entry 文件必须存在
+//  - downloads 数组（可选，DEMO-HOSTING.md §9.5）：存在时校验每项 os/url/size 必填、
+//    os 必须是 win/mac/linux、size 为正整数、url 指向的文件必须物理存在
 // 失败 → exit 1，阻塞本地构建产物提交（commit 时跑一次即可）。
 
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
@@ -25,6 +26,10 @@ const REQUIRED_FIELDS = [
 const SUPPORTED_STATUS = ['alpha', 'beta', 'released', 'archived'];
 const RECOMMENDED_SCHEMA_VERSION = '3.0';
 const FORBIDDEN_FIELDS = ['homepage', 'repository', 'repo', 'source', 'code'];
+
+// downloads 数组（DEMO-HOSTING.md §9.5）— 仅在字段存在时校验，缺省不报错
+const DOWNLOADS_REQUIRED_FIELDS = ['os', 'url', 'size'];
+const SUPPORTED_OS = ['win', 'mac', 'linux'];
 
 const root = process.cwd();
 const demosDir = join(root, 'docs', 'demos');
@@ -119,6 +124,43 @@ for (const slug of slugs) {
     if (!existsSync(ep)) {
       console.error(`  [ERR] entry 文件不存在: ${manifest.entry}`);
       errors++;
+    }
+  }
+
+  // downloads 数组（DEMO-HOSTING.md §9.5）— 可选字段，存在才校验
+  if (manifest.downloads !== undefined && manifest.downloads !== null) {
+    if (!Array.isArray(manifest.downloads)) {
+      console.error(`  [ERR] downloads 必须是数组`);
+      errors++;
+    } else {
+      manifest.downloads.forEach((d, i) => {
+        const label = `downloads[${i}]`;
+        // 必填键
+        for (const f of DOWNLOADS_REQUIRED_FIELDS) {
+          if (d[f] === undefined || d[f] === null || d[f] === '') {
+            console.error(`  [ERR] ${label}.${f} 缺失`);
+            errors++;
+          }
+        }
+        // os 枚举
+        if (d.os && !SUPPORTED_OS.includes(d.os)) {
+          console.error(`  [ERR] ${label}.os="${d.os}"（必须是 ${SUPPORTED_OS.join('/')}）`);
+          errors++;
+        }
+        // size 必须为正整数
+        if (d.size !== undefined && d.size !== null && (!Number.isInteger(d.size) || d.size <= 0)) {
+          console.error(`  [ERR] ${label}.size=${d.size}（必须是正整数，字节数）`);
+          errors++;
+        }
+        // url 指向的文件必须物理存在
+        if (d.url) {
+          const dp = join(slugDir, d.url);
+          if (!existsSync(dp)) {
+            console.error(`  [ERR] ${label} 下载文件不存在: ${d.url}`);
+            errors++;
+          }
+        }
+      });
     }
   }
 
