@@ -298,6 +298,39 @@ git push origin main
 > Web 试玩始终是首选（v4.0 拓扑），本节是**额外**的离线交付通道——
 > 用户在线试玩后可下载 zip 到本地解压游玩，无需联网、无需安装。
 
+### 9.0 职责边界（AI 协作必读）
+
+> 本节是**产品仓 AI 跨仓自动化的入口规则**。
+> Wesnoth / IdleMMO / 未来产品仓的 AI 接到"发布 zip"指令时，**先读此节**再动手。
+
+两仓同根目录（用户工作空间 `C:\developer\hanmo\`）的前提下，4 步发布流程的职责切分：
+
+| 步骤 | 章节 | 谁做 | 在哪 |
+|---|---|---|---|
+| ① 仓内打包 zip | §9.6.1 | **AI·产品仓** | 产品仓根目录 |
+| ② 把 zip 上传到 Hub 仓 Release | §9.6.2 | **你手动** | Hub 仓 `tools/publish-demo-release.ps1` 或浏览器 |
+| ③ 写 manifest.json + products.json | §9.6.3 | **AI·Hub 仓** | Hub 仓根目录（AI 可 `cd ../HanmoTechnology` 跨仓） |
+| ④ 重建主页 | §9.6.4 | **AI·Hub 仓** | Hub 仓根目录 |
+| ⑤ `git push` | — | **你手动** | 任意 |
+
+**AI 不可触越的边界**（即便同根目录也不允许）：
+
+- ❌ **不要跨仓调 `gh release create`** —— AI 沙箱内无 token + `gh` 不在 PATH + HTTPS 受限。§9.6.2 必须由你执行。
+- ❌ **不要在产品仓内写 manifest / publish / Hub 相关脚本** —— 违反产品仓零侵入原则。
+- ❌ **永远不要 `git push`** —— 全 session 一律由你手动。
+
+**§9.6.1 完成后的标准交付物**（AI 必须把这一段交给你再停手）：
+
+```
+zip 绝对路径 : <产品仓>/HanmoXxx-v0.x.y-win.zip
+zip 字节数   : <size>
+建议 tag    : v0.x.y
+建议命令    : cd C:/developer/hanmo/HanmoTechnology
+              .\tools\publish-demo-release.ps1 -Tag v0.x.y -ZipPath <上面> -Slug HanmoXxx
+```
+
+你跑完 §9.6.2 拿到 release URL 后，把 URL 发回给 AI，AI 继续接手 §9.6.3 / §9.6.4（写字段 + 重建主页），最后在 Hub 仓本地 commit（**不 push**——等你 push）。
+
 ### 9.1 形态
 
 **win-unpacked 目录 → zip 压缩**（解压即玩，符合"下载后本地解压游玩"原话）。
