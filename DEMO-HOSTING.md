@@ -335,29 +335,54 @@ powershell -NoProfile -Command "Compress-Archive -Path 'win-unpacked' -Destinati
 
 ### 9.3 目录结构
 
+**主路线（走 Release）：docs/ 不放 zip**，仅 Web 产物：
+
 ```
 docs/demos/<slug>/
 ├── index.html
 ├── manifest.json
 ├── thumbnail.svg
-├── assets/...                       ← Web 产物
-└── downloads/                       ← 离线包集中点
+└── assets/...                       ← Web 产物
+```
+
+**备选（小 zip 同仓）**：才需要 `downloads/`：
+
+```
+docs/demos/<slug>/
+├── ...
+└── downloads/
     └── HanmoXxx-v0.x.y-win.zip
 ```
 
-- `downloads/` 与 `index.html` **同级**——表明 zip 是该 demo 的"附属资产"，不是另一个 web 入口
-- 文件名带版本号 → 同一 demo 多个历史版本可并存（暂不强制清理旧版）
+- 主路线下 zip 在官网仓 Release，`docs/` 保持纯 Web 产物（git push 无 100MB 限制困扰）
+- 备选 `downloads/` 仅用于 < 100 MiB 且想与 Web 同仓的特殊情况
 
-### 9.4 体积红线
+### 9.4 体积红线与发布通道（核心决策）
 
-> 复用 §5 的"200MB 不入库"红线，但离线包稍宽（chromium runtime 占大头是合理的）：
+> ⚠️ **实测事实**：产品 zip 实际约 **288MB**，超过 GitHub git 单文件硬限 **100 MiB**
+> （官方：*"GitHub blocks files larger than 100 MiB"*），**无法塞进 git 仓 / docs/**。
+> 且产品仓是 **private** → 它的 release 玩家匿名不可见，也走不通。
+>
+> 所以**唯一可行且推荐的正解：把 zip 挂到官网仓（HanmoTechnology, public）的 GitHub Releases**。
 
-| 单 zip 大小 | 处理 |
+| zip 大小 | 通道 | 理由 |
+|---|---|---|
+| 任意（含 288MB） | ✅ **官网仓 Release（主路线）** | release asset 单文件上限 = Git LFS 上限，免费计划 **2GB**，288MB 无压力；release assets **不计入仓库体积**，Pages 不受影响；public 仓 asset **匿名可下** |
+| < 100 MiB 且想与 Web 同仓 | （备选）`docs/demos/<slug>/downloads/` | 仅小文件 git push 可行；一般不推荐，走 Release 更干净 |
+
+**为什么必须挂官网仓而不是产品仓**
+
+| 检查项 | 结果 |
 |---|---|
-| ≤ 200 MB | ✅ 塞 `docs/demos/<slug>/downloads/`，与 Web 产物同仓 |
-| > 200 MB | ❌ 不入库；改走 GitHub Release（`HanmoXxx` 仓 Releases 页面），主页按钮指向 release URL |
+| 官网仓是否 public | ✅ `private: false`（已用 API 验证） |
+| 产品仓是否 private | ✅ 匿名 API 返回 404（已用 API 验证，确实 private） |
+| 官网仓当前 release | ✅ 无任何 release，从 0 开始无 tag 冲突 |
+| 288MB 能否上传 | ✅ release asset 单文件上限 2GB，288MB 完全没问题 |
+| 是否占仓库体积 | ✅ 不占（release assets 不计入仓库大小，不影响官网 Pages） |
+| 匿名玩家能否下载 | ✅ public 仓 release asset 匿名可下 |
 
-zip 通常 100-200 MB，落在第一档。HanmoWesnoth（web 58.9 MB）打包后预计 130-180 MB，OK。
+**结论**：产品 zip 一律挂官网仓 `HanmoTechnology` 的 Release，主页按钮指向 release asset 下载链接。
+`docs/demos/<slug>/downloads/` 仅保留为"极小 zip + 想同仓"的备选，不再作为默认。
 
 ### 9.5 manifest / products.json 字段
 
@@ -366,11 +391,11 @@ zip 通常 100-200 MB，落在第一档。HanmoWesnoth（web 58.9 MB）打包后
 | 键 | 类型 | 必填 | 说明 |
 |---|---|---|---|
 | `os` | string | ✓ | `win` / `mac` / `linux` |
-| `url` | string | ✓ | zip 相对路径，**相对 demo 产物目录**，如 `"downloads/HanmoIdleMMO-v0.0.3-win.zip"`。**不含 `docs/` 前缀**，URL 拼装规则与 `entry` / `thumbnail` 一致 |
+| `url` | string | ✓ | zip 下载地址，**两种写法**：① **external URL 完整链接（推荐，走 Release）**：`https://github.com/livingyang/HanmoTechnology/releases/download/<tag>/<file>.zip`；② **相对路径（塞 docs/ 备选）**：`downloads/HanmoXxx-v0.0.3-win.zip`。DemoCard 检测 `url` 以 `http(s)://` 开头则直接用，否则拼 `BASE_URL + entry + url` |
 | `size` | number | ✓ | zip 字节数（int），主页渲染 `XXX MB` 用 |
-| `updatedAt` | string | × | 此 zip 打包日期，`YYYY-MM-DD` |
+| `updatedAt` | string | × | 此 zip 打包/上传日期，`YYYY-MM-DD` |
 
-manifest 示例：
+manifest 示例（走 Release，external URL）：
 
 ```json
 {
@@ -388,19 +413,22 @@ manifest 示例：
   "downloads": [
     {
       "os": "win",
-      "url": "downloads/HanmoIdleMMO-v0.0.3-win.zip",
-      "size": 156789012,
+      "url": "https://github.com/livingyang/HanmoTechnology/releases/download/v0.0.3/HanmoIdleMMO-v0.0.3-win.zip",
+      "size": 301989888,
       "updatedAt": "2026-09-07"
     }
   ]
 }
 ```
 
-products.json 同步在对应 product 对象下加 `downloads`（结构同 manifest）。`size` 可用 `(Get-Item <file>).Length` 取。
+products.json 同步在对应 product 对象下加 `downloads`（结构同 manifest，url 同样用完整 external URL）。`size` 可用 `(Get-Item <file>).Length` 取。
 
-### 9.6 一次性离线包发布流程
+### 9.6 一次性离线包发布流程（官网仓 Release）
 
-> 与 §4 Web 发布流程并行；如同时更新 Web + 离线包，按 §4.1 → §9.6.1 → §4.2 → §9.6.2 → §4.3 → §4.4 顺序。
+> **上传 release 这一步由你手动执行**（沙箱内 gh 不可用 / 无 token / HTTPS 受限，
+> git push 都走不通，release 上传同理）。AI 负责其余：build zip、写 `downloads[]`、重建主页。
+>
+> 与 §4 Web 发布流程并行；如同时更新 Web + 离线包，Web 走 §4，离线包走本节。
 
 #### 9.6.1 [AI·产品仓] build Electron + 打包 zip
 
@@ -409,42 +437,65 @@ cd <产品仓>
 git pull
 npm install                          # electron-builder 第一次需要
 npm run dist:dir                     # 输出到 dist/win-unpacked/
-# zip 打包
+# zip 打包（进入 dist 上一层目录打，避免把 dist 目录本身卷进去）
 cd dist
 powershell -NoProfile -Command "Compress-Archive -Path 'win-unpacked' -DestinationPath '../HanmoXxx-v0.x.y-win.zip' -Force"
 cd ..
 ```
 
-#### 9.6.2 [AI·Hub仓] 复制 zip 到 downloads/
+#### 9.6.2 [你·手动] 上传 zip 到官网仓 Release
 
-```bash
-HUB=<Hub 仓绝对路径>
-SLUG=HanmoIdleMMO
-PRODUCT_ZIP=<产品仓路径>/HanmoXxx-v0.x.y-win.zip
+> 在浏览器打开官网仓 `https://github.com/livingyang/HanmoTechnology/releases`，
+> 点 **Draft a new release**，填：
 
-mkdir -p $HUB/docs/demos/$SLUG/downloads
-cp $PRODUCT_ZIP $HUB/docs/demos/$SLUG/downloads/
+| 项 | 值 |
+|---|---|
+| Tag | `v0.x.y`（与 Web 版版本一致，如 `v0.0.3`；无同名 tag 才不冲突） |
+| Release title | `HanmoXxx v0.x.y`（可留空用 tag） |
+| Attach binaries | 拖入 `HanmoXxx-v0.x.y-win.zip` |
+
+上传完成后，复制该 asset 的下载链接，格式：
+
 ```
+https://github.com/livingyang/HanmoTechnology/releases/download/v0.x.y/HanmoXxx-v0.x.y-win.zip
+```
+
+> 或用 GitHub CLI（本地有 gh + 已登录时）：
+> ```bash
+> gh release create v0.x.y HanmoXxx-v0.x.y-win.zip \
+>   --repo livingyang/HanmoTechnology --title "HanmoXxx v0.x.y"
+> ```
 
 #### 9.6.3 [AI·Hub仓] 同步更新 manifest.json + products.json
 
-分别给两份文件加 `downloads` 数组。size 用：
+给两份文件各加 `downloads` 数组，`url` 填第 9.6.2 步复制的完整 external URL：
 
-```bash
-SIZE=$(stat -c %s $HUB/docs/demos/$SLUG/downloads/HanmoXxx-v0.x.y-win.zip)
-echo $SIZE
+```json
+"downloads": [
+  {
+    "os": "win",
+    "url": "https://github.com/livingyang/HanmoTechnology/releases/download/v0.x.y/HanmoXxx-v0.x.y-win.zip",
+    "size": 301989888,
+    "updatedAt": "2026-09-07"
+  }
+]
 ```
 
-Windows Git Bash 下用 `wc -c < <file>` 兼容。
+#### 9.6.4 [AI·Hub仓] 重建主页
 
-然后跑 §4.4 重建主页（DemoCard 自动识别 `downloads` 字段，按需渲染下载按钮）。
+跑 §4.4 重建主页（DemoCard 自动识别 `downloads` 字段，若 url 以 `http(s)://` 开头直接用 external 链接）。
 
 ### 9.7 主页按钮行为
 
 - **当前 DemoCard**：试玩按钮（`▶ 直接试玩`，新窗口打开 web 版）
 - **新增**：当 `downloads.length > 0` 时，下方多渲染一行次要按钮：
-  - Win 包：`📦 下载 Win 版 · 156 MB`（`<a href="${entry}${downloads[0].url}" download>`）
+  - Win 包：`📦 下载 Win 版 · 288 MB`（`<a href="${url}">`）
+  - `url` 以 `http(s)://` 开头 → 直接用 external 链接（走 Release，按钮导航到 GitHub 下载）
+  - `url` 为相对路径 → 拼 `BASE_URL + entry + url`（走 docs/ 备选，加 `download` 属性）
 - **无 downloads 时**：按钮不渲染，主页表现与 v4.0 完全一致（**无破坏性**）
+
+> 注意：cross-origin 链接（Release 的 `https://github.com/...`）标签上的 `download`
+> 属性会被浏览器忽略——但对 zip 这种二进制，浏览器默认"直接下载"，等效可接受。
 
 ### 9.8 校验扩展
 
@@ -452,7 +503,10 @@ Windows Git Bash 下用 `wc -c < <file>` 兼容。
 
 - 若 `downloads` 存在，每项必填 `os` / `url` / `size`，否则 `[ERR]`
 - `os` 必须是 `win` / `mac` / `linux` 之一，否则 `[ERR]`
-- `url` 指向的文件必须物理存在（`existsSync(slugDir/<url>)`），否则 `[ERR]`
+- `url` 以 `http(s)://` 开头（external / Release）：校验必须指向
+  `https://github.com/livingyang/HanmoTechnology/releases/download/` 前缀，
+  防止外链到别的域；**不做本地存在性检查**
+- `url` 为相对路径（docs/ 备选）：`existsSync(slugDir/<url>)`，否则 `[ERR]`
 - products.json 同步校验（可选：同样遍历 products[].downloads）
 
 > 当前 3 个 manifest 都没有 `downloads` 字段，**新逻辑对存量无影响**——脚本只在字段存在时校验，不存在则跳过。

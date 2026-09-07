@@ -13,7 +13,10 @@
 //    修复方法：直接编辑 docs/demos/<slug>/manifest.json，删掉对应行。
 //  - thumbnail / entry 文件必须存在
 //  - downloads 数组（可选，DEMO-HOSTING.md §9.5）：存在时校验每项 os/url/size 必填、
-//    os 必须是 win/mac/linux、size 为正整数、url 指向的文件必须物理存在
+//    os 必须是 win/mac/linux、size 为正整数
+//    url 以 http(s):// 开头（走官网仓 Release）→ 校验前缀
+//    https://github.com/livingyang/HanmoTechnology/releases/download/
+//    url 为相对路径（docs/ 备选）→ 文件必须物理存在
 // 失败 → exit 1，阻塞本地构建产物提交（commit 时跑一次即可）。
 
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
@@ -152,12 +155,22 @@ for (const slug of slugs) {
           console.error(`  [ERR] ${label}.size=${d.size}（必须是正整数，字节数）`);
           errors++;
         }
-        // url 指向的文件必须物理存在
+        // url 校验（DEMO-HOSTING.md §9.5/§9.8）：
+        //  - 以 http(s):// 开头（external，走官网仓 Release）→ 校验域名前缀，不做本地存在性
+        //  - 否则为相对路径（docs/ 备选）→ existsSync 本地存在
         if (d.url) {
-          const dp = join(slugDir, d.url);
-          if (!existsSync(dp)) {
-            console.error(`  [ERR] ${label} 下载文件不存在: ${d.url}`);
-            errors++;
+          if (/^https?:\/\//i.test(d.url)) {
+            const releasePrefix = 'https://github.com/livingyang/HanmoTechnology/releases/download/';
+            if (!d.url.startsWith(releasePrefix)) {
+              console.error(`  [ERR] ${label}.url 必须是官网仓 HanmoTechnology release 链接（前缀 ${releasePrefix}）: ${d.url}`);
+              errors++;
+            }
+          } else {
+            const dp = join(slugDir, d.url);
+            if (!existsSync(dp)) {
+              console.error(`  [ERR] ${label} 下载文件不存在: ${d.url}`);
+              errors++;
+            }
           }
         }
       });

@@ -86,12 +86,20 @@ export function demoThumbSrc(thumbnail: string): string {
 }
 
 /**
- * 计算离线包下载链接：entry 末尾有斜杠，url 以 downloads/ 开头，直接拼
+ * 计算离线包下载链接（DEMO-HOSTING.md §9.5）
+ * - url 以 http(s):// 开头（external，走官网仓 Release）→ 直接用，不拼前缀
+ * - url 为相对路径（`downloads/xxx.zip`，docs/ 备选）→ 拼 BASE_URL + entry（entry 末尾有斜杠）
  * 例：entry="demos/HanmoIdleMMO/" + url="downloads/HanmoIdleMMO-v0.0.3-win.zip"
  *   → /HanmoTechnology/demos/HanmoIdleMMO/downloads/HanmoIdleMMO-v0.0.3-win.zip
  */
 export function demoDownloadSrc(entry: string, url: string): string {
+  if (/^https?:\/\//i.test(url)) return url
   return `${import.meta.env.BASE_URL}${entry}${url}`
+}
+
+/** 判断下载 url 是否为外部完整链接（走官网仓 Release） */
+export function isExternalDownload(url: string): boolean {
+  return /^https?:\/\//i.test(url)
 }
 
 /** 把字节数格式化为 "XXX MB" / "X.X GB" */

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { ProductEntry } from '../data/products'
-import { demoSrc, demoThumbSrc, demoDownloadSrc, formatSize, osLabel } from '../data/products'
+import { demoSrc, demoThumbSrc, demoDownloadSrc, formatSize, osLabel, isExternalDownload } from '../data/products'
 
 const props = defineProps<{
   product: ProductEntry
@@ -51,8 +51,10 @@ const imgError = ref(false)
           :key="`${d.os}-${d.url}`"
           class="btn btn-secondary"
           :href="demoDownloadSrc(props.product.entry, d.url)"
-          :download="d.url.split('/').pop()"
-          :title="`下载 ${d.url}（${formatSize(d.size)}）`"
+          :download="isExternalDownload(d.url) ? undefined : d.url.split('/').pop()"
+          :target="isExternalDownload(d.url) ? '_blank' : undefined"
+          :rel="isExternalDownload(d.url) ? 'noopener' : undefined"
+          :title="`下载 ${osLabel(d.os)} 版 · ${formatSize(d.size)}`"
         >
           📦 下载 {{ osLabel(d.os) }} 版 · {{ formatSize(d.size) }}
         </a>
