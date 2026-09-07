@@ -36,8 +36,12 @@
 - ✅ manifest v3.0 schema 收尾：DEMO-HOSTING.md §3 拆为必填 9 / 可选 5 / 禁止 5
   + validate-manifests.mjs 加 FORBIDDEN_FIELDS 检测，f0989ce 升级为 [ERR] 阻塞 commit
 - ✅ 主页所有 homepage 残留清零：products.json + 3 个 manifest（f0989ce）
-- 待 push：`b68d550` → 用户手动 `git push origin main` → Pages 自动 Branch 部署
-  （ahead of origin/main by 2 commits：f0989ce 主 commit + b68d550 tmp 清理 follow-up）
+- ✅ DEMO-HOSTING v4.1：增加 §9 离线包交付（Electron zip 解压即玩，commit 5aa5b49）
+  - docs/demos/<slug>/downloads/<HanmoXxx-v0.x.y-win.zip> 存放 zip
+  - manifest + products.json 各加 downloads 数组（os/url/size/updatedAt）
+  - DemoCard v-for 渲染 .btn-secondary 下载按钮，downloads 缺省时 0 回归
+- 待 push：`5aa5b49` → 用户手动 `git push origin main` → Pages 自动 Branch 部署
+  （ahead of origin/main by 4 commits：f0989ce + b68d550 + f558865 + 5aa5b49）
 
 ## Web 试玩产品托管（DEMO-HOSTING v4.0）
 
@@ -55,11 +59,14 @@
   - 用户手动 `git add docs/ + commit + push` Hub 仓
   - GitHub Pages 内置 Branch 部署（无需 Actions）
 - 路径：`https://livingyang.github.io/HanmoTechnology/demos/<slug>/`（物理位置在 `docs/demos/<slug>/`）
-- 体积阈值：单产品 ≤ 100MB 完美；100-200MB 可接受；>200MB 不入库
+- 体积阈值：单产品 Web 产物 ≤ 100MB 完美；100-200MB 可接受；>200MB 不入库。
+  **Electron zip 离线包走 §9.4 单独红线**（≤200MB 塞 docs/，>200MB 走 GitHub Release）
 - Hub 校验脚本：`tools/validate-manifests.mjs`，commit 前手动跑扫 `docs/demos/*/manifest.json`，缺字段 exit 1
 - manifest schema：v3.0，DEMO-HOSTING.md §3.1/§3.2/§3.3 拆为必填 9 / 可选 5 / 禁止 5
   - 必填：schemaVersion / slug / name / nameEn / tagline / thumbnail / version / status / entry
-  - 可选：tags / updatedAt / embeddable / sandbox / description（embeddable/sandbox 已不消费，新 demo 可省略）
+  - 可选：tags / updatedAt / embeddable / sandbox / description / **downloads（v4.1 新增，§9.5）**
+  - download 每项：os（win/mac/linux）/ url（相对 demo 产物目录，如 `downloads/HanmoXxx-v0.x.y-win.zip`）/ size（字节数）/ updatedAt
+  - url 物理存在由 validate-manifests.mjs 检查（与 entry/thumbnail 同级）
   - 禁止：homepage / repository / repo / source / code（违反"主页禁源码"规则，commit 95114d8）
   - validate-manifests.mjs 检测禁止字段：出现即 **[ERR]** exit 1 阻塞 commit（f0989ce 升级，之前 ce11fd1 阶段只 warning — 没人理）
   - 当前 3 个 manifest + products.json 已全部清掉 homepage（f0989ce）
