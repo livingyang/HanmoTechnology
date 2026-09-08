@@ -36,14 +36,34 @@
 - ✅ manifest v3.0 schema 收尾：DEMO-HOSTING.md §3 拆为必填 9 / 可选 5 / 禁止 5
   + validate-manifests.mjs 加 FORBIDDEN_FIELDS 检测，f0989ce 升级为 [ERR] 阻塞 commit
 - ✅ 主页所有 homepage 残留清零：products.json + 3 个 manifest（f0989ce）
-- ✅ DEMO-HOSTING v4.1：增加 §9 离线包交付（Electron zip 解压即玩，commit 5aa5b49）
-  - **主路线 = 官网仓 Release**（932b90c pivot）：产品 zip 实际 288MB > git 单文件 100 MiB 硬限，
-    且产品仓 private（匿名 API 404 验证），只能挂官网仓 HanmoTechnology（public）的 Releases
-  - downloads[].url 支持两种写法：external（Release 完整链接）/ 相对路径（docs/ 小 zip 备选）
-  - DemoCard v-for 渲染 .btn-secondary 下载按钮，downloads 缺省时 0 回归
-  - 上传 release 由用户手动（沙箱 gh 不可用 + 无 token）；AI 只写 downloads[] + 重建主页
-- 待 push：`932b90c` → 用户手动 `git push origin main` → Pages 自动 Branch 部署
-  （ahead of origin/main by 4 commits：f0989ce + b68d550 + f558865 + 5aa5b49）
+- ✅ DEMO-HOSTING v4.3（commit a6751fa）**双击即发布** —— `tools/publish-release-direct.ps1`
+  - **用户诉求**：打包 zip 后不想手动复制命令行去 PowerShell 跑 → 改"双击"
+  - 标准件 `tools/publish-release-direct.ps1`（零参数），AI 打包后 cp 到
+    `temp/<slug>/<v>/publish-release.ps1` 与 zip 同目录，用户双击即发布
+  - 自动推导：`$Tag`=所在目录名、`$Slug`=上一级目录名、`$ZipPath`=同目录唯一 `*.zip`
+  - 发布前输入 y 轻量确认；发布后询问是否 `git push`（y 一步触发 Pages 部署）
+  - 脚本副本被 `.gitignore` 排除（`temp/**/publish-release.ps1`），不入库
+  - §9.6.2 方式 A 改为"双击脚本"；§9.8.1 加 step5 复制脚本；§9.8.3 加约束复制脚本
+  - **release tag 命名（commit 0f589fa）**：tag = `<slug>-v<version>`（如 `HanmoWesnoth-v0.1.0`），
+    **禁止纯 `v0.1.0`** —— GitHub Release tag 是仓库级唯一命名空间，多产品同版本会撞 tag；
+    目录名仍用纯版本，tag 由 slug+version 拼出
+- ✅ DEMO-HOSTING v4.2（commit 0029c00）：
+  1cd1d90 落地 temp/ 中转目录 + 0029c00 收尾 §9（职责边界 + 发布三方式 + 端到端 AI 工作流）
+  - v4.1（5aa5b49 / 932b90c pivot）核心：**主路线 = 官网仓 Release**
+    （产品 zip 实际 288MB > git 单文件 100 MiB 硬限，且产品仓 private 匿名 API 404，
+    只能挂官网仓 HanmoTechnology（public）的 Releases）
+  - v4.1+ 增量：downloads[].url 支持 external（Release 完整链接）/ 相对路径（docs/ 小 zip 备选），
+    DemoCard v-for 渲染 .btn-secondary 下载按钮，downloads 缺省时 0 回归
+  - v4.2 增量：
+    · **temp/<HanmoXxx>/<v0.x.y>/HanmoXxx-v0.x.y-win.zip** —— AI 把 zip 暂存到 Hub 仓 temp/，
+      由用户用真实 PowerShell 跑 `tools/publish-demo-release.ps1` 推到 Release
+    · temp/.gitignore：`temp/**/*.zip`（只忽略 zip，不挡 README/.gitkeep）—— 沙箱实测通过
+    · §9.6.2 三方式：PowerShell(推荐) / 浏览器(GitHub UI) / 裸 gh release create
+    · §9.8 AI 一次跑完：14 步伪代码 + §9.8.3 AI 提示词模板可直接贴
+    · §9.0 职责边界：AI 沙箱内禁止 `gh release create` + 禁止产品仓写 manifest，
+      **AI 可以 cd/cp/写文件/commit，永不 push，永不 gh**
+- 当前 ahead of origin/main by 6 commits：f0989ce + b68d550 + f558865 + 5aa5b49 + 1cd1d90 + 0029c00
+  → 用户手动 `git push origin main` → Pages 自动 Branch 部署
 
 ## Web 试玩产品托管（DEMO-HOSTING v4.0）
 
