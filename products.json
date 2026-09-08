@@ -47,6 +47,14 @@
       "embeddable": true,
       "sandbox": "allow-scripts allow-same-origin",
       "addedAt": "2026-09-05",
+      "downloads": [
+        {
+          "os": "win",
+          "url": "https://github.com/livingyang/HanmoTechnology/releases/download/v0.1.0/HanmoWesnoth-v0.1.0-win.zip",
+          "size": 361023857,
+          "updatedAt": "2026-09-08"
+        }
+      ],
       "order": 30
     }
   ]
