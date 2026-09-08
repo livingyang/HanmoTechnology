@@ -8,7 +8,12 @@
       "tagline": "放置类 MMO 单机版",
       "entry": "demos/HanmoIdleMMO/",
       "thumbnail": "demos/HanmoIdleMMO/thumbnail.svg",
-      "tags": ["idle", "mmo", "vue3", "放置"],
+      "tags": [
+        "idle",
+        "mmo",
+        "vue3",
+        "放置"
+      ],
       "category": "game",
       "status": "alpha",
       "version": "0.0.1",
@@ -24,14 +29,28 @@
       "tagline": "Roguelike 卡牌爬塔单机版",
       "entry": "demos/HanmoArcomage/",
       "thumbnail": "demos/HanmoArcomage/thumbnail.svg",
-      "tags": ["card", "roguelike", "vue3", "playcanvas", "卡牌"],
+      "tags": [
+        "card",
+        "roguelike",
+        "vue3",
+        "playcanvas",
+        "卡牌"
+      ],
       "category": "game",
       "status": "alpha",
       "version": "0.1.0",
       "embeddable": true,
       "sandbox": "allow-scripts allow-same-origin",
       "addedAt": "2026-09-05",
-      "order": 20
+      "order": 20,
+      "downloads": [
+        {
+          "os": "win",
+          "url": "https://github.com/livingyang/HanmoTechnology/releases/download/HanmoArcomage-v0.1.0/HanmoArcomage-v0.1.0-win.zip",
+          "size": 147452128,
+          "updatedAt": "2026-09-08"
+        }
+      ]
     },
     {
       "slug": "HanmoWesnoth",
@@ -40,7 +59,13 @@
       "tagline": "回合制战棋单机版（王位继承人战役）",
       "entry": "demos/HanmoWesnoth/",
       "thumbnail": "demos/HanmoWesnoth/thumbnail.jpg",
-      "tags": ["strategy", "tbs", "vue3", "playcanvas", "战棋"],
+      "tags": [
+        "strategy",
+        "tbs",
+        "vue3",
+        "playcanvas",
+        "战棋"
+      ],
       "category": "game",
       "status": "alpha",
       "version": "0.1.0",
