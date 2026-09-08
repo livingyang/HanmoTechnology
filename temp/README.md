@@ -11,11 +11,20 @@ temp/
 ├── .gitkeep                                   ← 占位文件（让空目录能 commit）
 └── <HanmoXxx>/                               ← 按产品分（与 docs/demos/ 对齐）
     └── <v0.x.y>/                             ← 按版本分（与 release tag 对齐）
-        └── HanmoXxx-v0.x.y-win.zip           ← cp 自产品仓的 zip 产物
+        ├── HanmoXxx-v0.x.y-win.zip           ← cp 自产品仓的 zip 产物
+        └── publish-release.ps1               ← 可双击发布脚本（AI 从 tools/ cp 来）
 ```
 
-**不**在 `temp/<slug>/<v>/` 下放发布脚本——发布动作统一走根目录的
-`tools/publish-demo-release.ps1`（AI 直接打参数到命令行，零中间脚本）。
+## 双击即发布
+
+AI 打包后会把**可双击的发布脚本** `publish-release.ps1` 复制到 zip 同目录。
+用户在该目录双击它即可完成发布，无需手动复制任何命令行。
+
+- **零参数**：`$Slug`/`$Tag` 从所在目录名自动推导，`$ZipPath` 自动探测同目录唯一的 `*.zip`
+- **发布前**：打印 slug/tag/zip/大小，输入 `y` 确认（防手滑）
+- **发布后**：询问是否顺带 `git push origin main`，输入 `y` 一步到位触发 Pages 部署
+- **标准件位置**：`tools/publish-release-direct.ps1`（入库）；`temp/<slug>/<v>/` 下的
+  副本被 `.gitignore` 排除，不入库，用完即删
 
 ## 典型生命周期
 
@@ -23,17 +32,16 @@ temp/
 # 1. AI 在产品仓跑 §9.6.1 后 cp 过来
 mkdir -p temp/HanmoIdleMMO/v0.0.3/
 cp <产品仓>/HanmoIdleMMO-v0.0.3-win.zip temp/HanmoIdleMMO/v0.0.3/
+cp tools/publish-release-direct.ps1 temp/HanmoIdleMMO/v0.0.3/publish-release.ps1
 
 # 2. AI 同步写好 products.json + manifest.json 的 downloads[]，
 #    url 字段填期望的 release URL（标签一致即可）
 #    主页 rebuild 完成、validate 0 ERR
 
-# 3. 你手动跑（沙箱内 gh 不可用，必须真实环境）
-cd C:/developer/hanmo/HanmoTechnology
-.\tools\publish-demo-release.ps1 \
-    -Tag v0.0.3 \
-    -ZipPath temp/HanmoIdleMMO/v0.0.3/HanmoIdleMMO-v0.0.3-win.zip \
-    -Slug HanmoIdleMMO
+# 3. 你双击 temp/HanmoIdleMMO/v0.0.3/publish-release.ps1
+#    脚本自动推导 slug/tag/zip → 轻量确认 → gh release create
+#    发布后询问是否 git push（输入 y 一步触发 Pages 部署）
+#    【沙箱内 gh 不可用，必须真实环境双击】
 
 # 4. release 一发布 → 主页下载按钮立刻可用（url 已预填好）
 
@@ -53,8 +61,8 @@ rm -rf temp/HanmoIdleMMO/v0.0.3/
 ## 清理规则
 
 - ✅ **保留**：`temp/README.md` + `temp/.gitkeep`（保证空目录能进 git）
-- 🗑️ **发布完即可删**：`temp/<HanmoXxx>/<v0.x.y>/` 整个子目录（包括 zip）
-- ❌ **不要 commit**：`temp/<HanmoXxx>/<v0.x.y>/*.zip`（已在 .gitignore 拒绝）
+- 🗑️ **发布完即可删**：`temp/<HanmoXxx>/<v0.x.y>/` 整个子目录（含 zip + publish-release.ps1 副本）
+- ❌ **不要 commit**：`temp/<HanmoXxx>/<v0.x.y>/*.zip` 和 `*/publish-release.ps1`（均被 .gitignore 拒绝）
 
 ## 与 docs/demos/<slug>/downloads/ 的区别
 

@@ -5,7 +5,7 @@
 
 | | |
 |---|---|
-| **版本** | 4.2（v4.1 + §9 走官网仓 Release + `tools/publish-demo-release.ps1` 发布脚本） |
+| **版本** | 4.3（v4.2 + §9 离线包走官网仓 Release + `tools/publish-release-direct.ps1` 可双击发布脚本） |
 | **生效日期** | 2026-09-05 |
 | **线上地址** | `https://livingyang.github.io/HanmoTechnology/demos/<slug>/` |
 | **Hub 仓** | `github.com/livingyang/HanmoTechnology` |
@@ -309,9 +309,9 @@ git push origin main
 
 | 步骤 | 谁做 | 在哪 |
 |---|---|---|
-| ① AI 一次跑完：仓内打包 zip + cp 到 `temp/` + 写 downloads[] + rebuild 主页 + commit | **AI 一次跑完** | 产品仓 + Hub 仓（跨仓） |
-| ② 上传 zip 到 Hub 仓 Release | **你手动** | 真实 PowerShell（沙箱内 gh 不可用） |
-| ③ `git push origin main` | **你手动** | Hub 仓 |
+| ① AI 一次跑完：仓内打包 zip + cp 到 `temp/` + 复制双击脚本到 zip 目录 + 写 downloads[] + rebuild 主页 + commit | **AI 一次跑完** | 产品仓 + Hub 仓（跨仓） |
+| ② 双击 `temp/<slug>/<v>/publish-release.ps1` 上传 zip 到 Hub 仓 Release | **你双击脚本** | Hub 仓 `temp/<slug>/<v>/`（沙箱内 gh 不可用） |
+| ③ `git push origin main` | **你双击脚本时选项** | Hub 仓（脚本里询问，输入 y 一步执行） |
 
 **AI 不可触越的边界**（即便同根目录也不允许）：
 
@@ -322,18 +322,12 @@ git push origin main
 **AI 跑完 ① 后的标准交付物**（AI 必须把这一段交给你再停手）：
 
 ```
-=== §9.8 AI 自动化工作流已跑完，请依次执行以下两步 ===
+=== §9.8 AI 自动化工作流已跑完，请双击脚本完成发布与部署 ===
 
-# 1) 上传 release（你的真实 PowerShell 环境）
-cd C:\developer\hanmo\HanmoTechnology
-.\tools\publish-demo-release.ps1 `
-    -Tag v0.x.y `
-    -ZipPath temp/HanmoXxx/v0.x.y/HanmoXxx-v0.x.y-win.zip `
-    -Slug HanmoXxx
-
-# 2) 推送 Hub 仓（触发 Pages 自动部署）
-cd C:\developer\hanmo\HanmoTechnology
-git push origin main
+1) 打开文件管理器，进入 temp/<HanmoXxx>/<v0.x.y>/
+2) 双击 publish-release.ps1
+   · 脚本自动推导 tag/slug/zip → 输入 y 确认 → gh release create
+   · 成功后询问是否 git push，输入 y 一步触发 Pages 部署
 
 === 完成后主页「📦 下载 Win 版」按钮立即生效 ===
 ```
@@ -470,8 +464,10 @@ products.json 同步在对应 product 对象下加 `downloads`（结构同 manif
 
 ### 9.6 一次性离线包发布流程（官网仓 Release）
 
-> **上传 release 这一步由你手动执行**（沙箱内 gh 不可用 / 无 token / HTTPS 受限，
-> git push 都走不通，release 上传同理）。AI 负责其余：build zip、写 `downloads[]`、重建主页。
+> **上传 release 这一步需你在真实环境执行**（沙箱内 gh 不可用 / 无 token / HTTPS 受限，
+> git push 都走不通，release 上传同理）。**最简单的方式是双击 AI 放到 zip 目录的
+> `publish-release.ps1`**（见 §9.6.2 方式 A）。AI 负责其余：build zip、复制双击脚本、
+> 写 `downloads[]`、重建主页。
 >
 > 与 §4 Web 发布流程并行；如同时更新 Web + 离线包，Web 走 §4，离线包走本节。
 
@@ -491,11 +487,26 @@ cd ..
 #### 9.6.2 [你·手动] 上传 zip 到官网仓 Release
 
 > 真实文件约 288MB，无法 git push，只能走官网仓 Release。
-> 你的本机已有 `gh` CLI 且已 `gh auth login`，**推荐直接用 `tools/publish-demo-release.ps1`（一条命令）**。
+> 你的本机已有 `gh` CLI 且已 `gh auth login`。**推荐直接用 AI 放到 zip 目录的
+> 可双击脚本** `publish-release.ps1`，零参数、双击即发布。
 
-**方式 A（推荐）—— 用 `tools/publish-demo-release.ps1` 脚本**
+**方式 A（推荐）—— 双击 zip 目录下的 `publish-release.ps1`**
 
-在 PowerShell 窗口执行：
+AI 打包后会把脚本复制到 `temp/<slug>/<v>/publish-release.ps1`，与 zip 同目录。用户：
+
+1. 打开文件管理器，进入 `temp/<slug>/<v>/`
+2. **双击 `publish-release.ps1`**（或用 PowerShell 执行 `.\publish-release.ps1`）
+
+脚本自动完成：
+- 从所在目录名推导 `$Tag=v0.x.y`、`$Slug=HanmoXxx`，自动探测同目录唯一的 `*.zip`
+- 打印 slug/tag/zip/大小 → 输入 `y` 确认（防手滑）
+- 委托核心脚本 `tools/publish-demo-release.ps1` 执行 `gh release create`
+- 发布成功后询问是否顺带 `git push origin main`，输入 `y` 一步触发 Pages 部署
+
+safety properties：gh 未装 / 未认证 / 目录下无 zip / 有多个 zip 时都会 `[ERR]` 退出，不会误发；
+发布前有轻量确认缓冲。脚本副本在 `.gitignore` 里排除，不入库，用完即删。
+
+**方式 B（备选）—— 手动跑核心脚本**（想精确控制参数时）：
 
 ```powershell
 cd C:/developer/hanmo/HanmoTechnology
@@ -511,7 +522,7 @@ cd C:/developer/hanmo/HanmoTechnology
 
 脚本前置检查：gh 在 PATH、已认证（全过了）、zip 文件存在。三者任一不满足会 `[ERR]` + exit 1 退出，不会误发。
 
-**方式 B（备选）—— 浏览器拖拽**
+**方式 C（备选）—— 浏览器拖拽**
 
 打开 `https://github.com/livingyang/HanmoTechnology/releases` → **Draft a new release**，填：
 
@@ -521,7 +532,7 @@ cd C:/developer/hanmo/HanmoTechnology
 | Release title | `HanmoXxx v0.x.y`（可留空用 tag） |
 | Attach binaries | 拖入 `HanmoXxx-v0.x.y-win.zip` |
 
-**方式 C（等价裸命令）**——不想用脚本时：
+**方式 D（等价裸命令）**——不想用脚本时：
 
 ```bash
 gh release create v0.x.y HanmoXxx-v0.x.y-win.zip \
@@ -643,23 +654,20 @@ cp -r website/dist/. docs/
 # 4) 跑 validate
 node tools/validate-manifests.mjs    # 期望: 0 ERR
 
-# 5) Hub 仓本地 commit（不 push）
+# 5) 复制可双击发布脚本到 zip 目录
+cp tools/publish-release-direct.ps1 temp/$SLUG/$TAG/publish-release.ps1
+
+# 6) Hub 仓本地 commit（不 push，脚本副本在 .gitignore 里排除）
 git add -A
 git commit -m "feat(<HanmoXxx> v0.x.y): 离线包交付通道"
 
 # ===== 交付物输出给用户 =====
-echo "=== §9.8 AI 自动化工作流已跑完，请依次执行以下两步 ==="
+echo "=== §9.8 AI 自动化工作流已跑完，请双击脚本完成发布与部署 ==="
 echo ""
-echo "# 1) 上传 release（你的真实 PowerShell 环境，沙箱内 gh 不可用）"
-echo "cd C:\\\\developer\\\\hanmo\\\\HanmoTechnology"
-echo ".\\\\tools\\\\publish-demo-release.ps1 \`"
-echo "    -Tag $TAG \`"
-echo "    -ZipPath temp/$SLUG/$TAG/$SLUG-$TAG-win.zip \`"
-echo "    -Slug $SLUG"
-echo ""
-echo "# 2) 推送 Hub 仓（触发 Pages 自动部署）"
-echo "cd C:\\\\developer\\\\hanmo\\\\HanmoTechnology"
-echo "git push origin main"
+echo "1) 打开文件管理器，进入 temp/$SLUG/$TAG/"
+echo "2) 双击 publish-release.ps1"
+echo "   - 脚本自动推导 tag/slug/zip → 输入 y 确认 → gh release create"
+echo "   - 成功后询问是否 git push，输入 y 一步触发 Pages 部署"
 echo ""
 echo "=== 完成后主页「📦 下载 Win 版」按钮立即生效 ==="
 ```
@@ -670,7 +678,7 @@ echo "=== 完成后主页「📦 下载 Win 版」按钮立即生效 ==="
 |---|---|
 | `downloads[].url` 预填期望 release URL | 用户跑完 release 后**按钮立刻可用**——避免"先 release 后回填 url"的两段式 |
 | `temp/<slug>/<v>/` 暂存 zip | 不入 git（`.gitignore` 已加 `temp/**/*.zip`），physical 位置在 Hub 仓 AI 跨仓可写 |
-| 不在 `temp/<slug>/<v>/` 下生成新 publish.ps1 | 复用 `tools/publish-demo-release.ps1` 一份统一脚本，避免每产品每版本散乱维护 |
+| 双击脚本 `publish-release.ps1` 放到 zip 目录 | 用户"双击即发布"，不用复制命令行；标准件在 `tools/publish-release-direct.ps1`，副本 cp 到 `temp/<slug>/<v>/` 且被 `.gitignore` 排除，不入库 |
 | 主页 rebuild 一次 | downloads[] 字段 + DemoCard 模板配合，url 是 external URL 直接用 |
 | validate 必须 0 ERR | 阻塞 commit，发现配置错误立即报 |
 | **不 push** | push 一律用户手动（v4.0 原则） |
@@ -691,6 +699,8 @@ echo "=== 完成后主页「📦 下载 Win 版」按钮立即生效 ==="
 - 不要跨仓调 `gh release create`（沙箱内 gh 不可用、无 token）
 - 不要在产品仓内写 manifest / publish / Hub 相关脚本
 - 不要 `git push`
+- 打包完 zip 后，把 `tools/publish-release-direct.ps1` 复制到
+  `temp/<SLUG>/<TAG>/publish-release.ps1`（给用户双击用）
 - 跑完按 §9.0 末尾「标准交付物」格式输出给用户
 ```
 
@@ -733,7 +743,8 @@ Hub 仓（HanmoTechnology）
 │   └── package.json
 ├── tools/
 │   ├── validate-manifests.mjs         ← 本地 commit 前手动跑（manifest + downloads 校验）
-│   ├── publish-demo-release.ps1       ← 发布 zip 到官网仓 Release（一行命令）
+│   ├── publish-demo-release.ps1       ← 发布 zip 到官网仓 Release（core，带参数）
+│   ├── publish-release-direct.ps1     ← 可双击发布脚本（零参数，AI 复制到 zip 目录）
 │   └── README-publish-release.md      ← gh CLI / token / 发布 / 清理 实操
 ├── DEMO-HOSTING.md                    ← 本文件
 └── COMPANY.md                         ← 公司资料

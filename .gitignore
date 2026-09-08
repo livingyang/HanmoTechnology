@@ -35,6 +35,10 @@ jspm_packages
 # 只忽略 zip 本身，README.md + .gitkeep 仍可入库。
 temp/**/*.zip
 
+# temp/<slug>/<v>/ 下 AI 复制进去的可双击发布脚本副本（非标准件，
+# 标准件永远在 tools/publish-release-direct.ps1）。忽略副本，防误提交。
+temp/**/publish-release.ps1
+
 # Optional npm cache directory
 .npm
 
