@@ -10,7 +10,7 @@ temp/
 ├── README.md                                  ← 本文件
 ├── .gitkeep                                   ← 占位文件（让空目录能 commit）
 └── <HanmoXxx>/                               ← 按产品分（与 docs/demos/ 对齐）
-    └── <v0.x.y>/                             ← 按版本分（与 release tag 对齐）
+    └── <v0.x.y>/                             ← 按版本分（release tag = <slug>-v0.x.y）
         ├── HanmoXxx-v0.x.y-win.zip           ← cp 自产品仓的 zip 产物
         └── publish-release.ps1               ← 可双击发布脚本（AI 从 tools/ cp 来）
 ```
@@ -20,7 +20,7 @@ temp/
 AI 打包后会把**可双击的发布脚本** `publish-release.ps1` 复制到 zip 同目录。
 用户在该目录双击它即可完成发布，无需手动复制任何命令行。
 
-- **零参数**：`$Slug`/`$Tag` 从所在目录名自动推导，`$ZipPath` 自动探测同目录唯一的 `*.zip`
+- **零参数**：`$Slug`/`$Tag` 从所在目录名自动推导（`$Tag` = `<slug>-<version>`，全局唯一），`$ZipPath` 自动探测同目录唯一的 `*.zip`
 - **发布前**：打印 slug/tag/zip/大小，输入 `y` 确认（防手滑）
 - **发布后**：询问是否顺带 `git push origin main`，输入 `y` 一步到位触发 Pages 部署
 - **标准件位置**：`tools/publish-release-direct.ps1`（入库）；`temp/<slug>/<v>/` 下的

@@ -372,6 +372,14 @@ powershell -NoProfile -Command "Compress-Archive -Path 'win-unpacked' -Destinati
 
 > 当前产品仓都是 `electron-builder --win`，仅 Windows。将来加 Mac / Linux 走 `HanmoXxx-v0.x.y-mac.zip` / `HanmoXxx-v0.x.y-linux.zip` 命名，schema 不变。
 
+**Release tag 命名（重要，避免跨产品撞车）**：
+
+- tag = `<slug>-v<version>`，例如 `HanmoWesnoth-v0.1.0`、`HanmoArcomage-v0.1.0`
+- **不要用纯版本号 `v0.1.0` 作 tag** —— GitHub Release tag 是仓库级唯一命名空间，
+  若两个产品都是 `v0.1.0` 会撞 tag（`gh release create` 报 `already exists`）。
+- 带上 slug 前缀后，不同产品即使版本号相同也能并存；asset 下载 URL 也随 tag 唯一：
+  `https://github.com/livingyang/HanmoTechnology/releases/download/<slug>-v<version>/<slug>-v<version>-win.zip`
+
 ### 9.3 目录结构
 
 **主路线（走 Release）：docs/ 不放 zip**，仅 Web 产物：
@@ -452,7 +460,7 @@ manifest 示例（走 Release，external URL）：
   "downloads": [
     {
       "os": "win",
-      "url": "https://github.com/livingyang/HanmoTechnology/releases/download/v0.0.3/HanmoIdleMMO-v0.0.3-win.zip",
+      "url": "https://github.com/livingyang/HanmoTechnology/releases/download/HanmoIdleMMO-v0.0.3/HanmoIdleMMO-v0.0.3-win.zip",
       "size": 301989888,
       "updatedAt": "2026-09-07"
     }
@@ -498,7 +506,7 @@ AI 打包后会把脚本复制到 `temp/<slug>/<v>/publish-release.ps1`，与 zi
 2. **双击 `publish-release.ps1`**（或用 PowerShell 执行 `.\publish-release.ps1`）
 
 脚本自动完成：
-- 从所在目录名推导 `$Tag=v0.x.y`、`$Slug=HanmoXxx`，自动探测同目录唯一的 `*.zip`
+- 从所在目录名推导 `$Slug=HanmoXxx`、`$Tag=HanmoXxx-v0.x.y`（slug+版本，全局唯一），自动探测同目录唯一的 `*.zip`
 - 打印 slug/tag/zip/大小 → 输入 `y` 确认（防手滑）
 - 委托核心脚本 `tools/publish-demo-release.ps1` 执行 `gh release create`
 - 发布成功后询问是否顺带 `git push origin main`，输入 `y` 一步触发 Pages 部署
@@ -511,7 +519,7 @@ safety properties：gh 未装 / 未认证 / 目录下无 zip / 有多个 zip 时
 ```powershell
 cd C:/developer/hanmo/HanmoTechnology
 .\tools\publish-demo-release.ps1 `
-    -Tag v0.0.3 `
+    -Tag HanmoIdleMMO-v0.0.3 `
     -ZipPath C:/build/HanmoIdleMMO-v0.0.3-win.zip `
     -Slug HanmoIdleMMO
 ```
@@ -528,21 +536,21 @@ cd C:/developer/hanmo/HanmoTechnology
 
 | 项 | 值 |
 |---|---|
-| Tag | `v0.x.y`（与 Web 版版本一致，如 `v0.0.3`；无同名 tag 才不冲突） |
+| Tag | `HanmoXxx-v0.x.y`（slug+版本，全局唯一；**不要用纯 `v0.x.y`**，否则跨产品撞 tag） |
 | Release title | `HanmoXxx v0.x.y`（可留空用 tag） |
 | Attach binaries | 拖入 `HanmoXxx-v0.x.y-win.zip` |
 
 **方式 D（等价裸命令）**——不想用脚本时：
 
 ```bash
-gh release create v0.x.y HanmoXxx-v0.x.y-win.zip \
+gh release create HanmoXxx-v0.x.y HanmoXxx-v0.x.y-win.zip \
   --repo livingyang/HanmoTechnology --title "HanmoXxx v0.x.y"
 ```
 
 上传完成后，复制该 asset 的下载链接，格式：
 
 ```
-https://github.com/livingyang/HanmoTechnology/releases/download/v0.x.y/HanmoXxx-v0.x.y-win.zip
+https://github.com/livingyang/HanmoTechnology/releases/download/HanmoXxx-v0.x.y/HanmoXxx-v0.x.y-win.zip
 ```
 
 #### 9.6.3 [AI·Hub仓] 同步更新 manifest.json + products.json
@@ -556,7 +564,7 @@ https://github.com/livingyang/HanmoTechnology/releases/download/v0.x.y/HanmoXxx-
 "downloads": [
   {
     "os": "win",
-    "url": "https://github.com/livingyang/HanmoTechnology/releases/download/v0.x.y/HanmoXxx-v0.x.y-win.zip",
+    "url": "https://github.com/livingyang/HanmoTechnology/releases/download/HanmoXxx-v0.x.y/HanmoXxx-v0.x.y-win.zip",
     "size": 301989888,
     "updatedAt": "2026-09-07"
   }
@@ -603,8 +611,9 @@ powershell -NoProfile -Command "Compress-Archive -Path 'win-unpacked' -Destinati
 cd ..
 ZIP_PATH="$(pwd)/HanmoXxx-v0.x.y-win.zip"
 ZIP_SIZE=$(stat -c %s "$ZIP_PATH")   # Git Bash 下取字节数
-TAG="v0.x.y"
 SLUG="HanmoXxx"
+TAG="v0.x.y"                          # 纯版本号，用于目录名 temp/<slug>/<version>
+RELEASE_TAG="$SLUG-$TAG"              # release tag（slug+版本，全局唯一）
 
 # ===== 跨仓到 Hub 仓 =====
 HUB="C:/developer/hanmo/HanmoTechnology"
@@ -622,7 +631,7 @@ for p in data['products']:
     if p['slug'] == '$SLUG':
         p['downloads'] = [{
             'os': 'win',
-            'url': 'https://github.com/livingyang/HanmoTechnology/releases/download/$TAG/$SLUG-$TAG-win.zip',
+            'url': 'https://github.com/livingyang/HanmoTechnology/releases/download/$RELEASE_TAG/$SLUG-$TAG-win.zip',
             'size': $ZIP_SIZE,
             'updatedAt': '$(date +%Y-%m-%d)'
         }]
@@ -638,7 +647,7 @@ p = 'docs/demos/$SLUG/manifest.json'
 with open(p, encoding='utf-8') as f: data = json.load(f)
 data['downloads'] = [{
     'os': 'win',
-    'url': 'https://github.com/livingyang/HanmoTechnology/releases/download/$TAG/$SLUG-$TAG-win.zip',
+    'url': 'https://github.com/livingyang/HanmoTechnology/releases/download/$RELEASE_TAG/$SLUG-$TAG-win.zip',
     'size': $ZIP_SIZE,
     'updatedAt': '$(date +%Y-%m-%d)'
 }]
@@ -676,6 +685,7 @@ echo "=== 完成后主页「📦 下载 Win 版」按钮立即生效 ==="
 
 | 决策 | 理由 |
 |---|---|
+| **release tag = `slug-v版本`（如 `HanmoWesnoth-v0.1.0`）** | GitHub Release tag 是仓库级唯一命名空间，纯 `v0.1.0` 会让两个产品撞 tag；带 slug 前缀后版本号可跨产品自由重复 |
 | `downloads[].url` 预填期望 release URL | 用户跑完 release 后**按钮立刻可用**——避免"先 release 后回填 url"的两段式 |
 | `temp/<slug>/<v>/` 暂存 zip | 不入 git（`.gitignore` 已加 `temp/**/*.zip`），physical 位置在 Hub 仓 AI 跨仓可写 |
 | 双击脚本 `publish-release.ps1` 放到 zip 目录 | 用户"双击即发布"，不用复制命令行；标准件在 `tools/publish-release-direct.ps1`，副本 cp 到 `temp/<slug>/<v>/` 且被 `.gitignore` 排除，不入库 |

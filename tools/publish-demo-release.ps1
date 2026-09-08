@@ -2,7 +2,11 @@
 # Publish a demo zip as a Hub release.
 #
 # Usage:
-#   ./tools/publish-demo-release.ps1 -Tag v0.0.3 -ZipPath C:/.../HanmoIdleMMO-v0.0.3-win.zip -Slug HanmoIdleMMO [-Draft] [-Replace]
+#   ./tools/publish-demo-release.ps1 -Tag HanmoIdleMMO-v0.0.3 -ZipPath C:/.../HanmoIdleMMO-v0.0.3-win.zip -Slug HanmoIdleMMO [-Draft] [-Replace]
+#
+# NOTE: Tag MUST be globally unique across products. Use "<Slug>-<version>"
+# (e.g. HanmoIdleMMO-v0.0.3), NOT a bare version (v0.0.3), so that two products
+# at the same version never collide on the repo-wide release tag namespace.
 #
 # Requires:
 #   - gh CLI on PATH (winget install GitHub.cli)
@@ -55,7 +59,7 @@ if ($Replace) {
 
 # ----- Show what we are about to do -----
 
-$title = "$Slug $Tag"
+$title = $Tag
 
 if ($Draft) {
     $modeText = "DRAFT [private, not public]"

@@ -6,9 +6,10 @@
 #   temp/HanmoWesnoth/v0.1.0/HanmoWesnoth-v0.1.0-win.zip
 #
 # It derives everything from its own location:
-#   - Tag   = the leaf folder name (e.g. v0.1.0)
-#   - Slug  = the folder above it (e.g. HanmoWesnoth)
-#   - Zip   = the single *.zip in the same folder
+#   - Version = the leaf folder name (e.g. v0.1.0)
+#   - Slug    = the folder above it (e.g. HanmoWesnoth)
+#   - Tag     = "<Slug>-<Version>" (e.g. HanmoWesnoth-v0.1.0) — unique per product
+#   - Zip     = the single *.zip in the same folder
 #
 # It then delegates the actual `gh release create` to the core script
 # tools/publish-demo-release.ps1, and (on success) offers to run git push.
@@ -23,21 +24,26 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-# ----- Derive Slug / Tag / ZipPath from this script location -----
-# Folder layout: temp/<Slug>/<Tag>/<this script>.ps1 + <Slug>-<Tag>-win.zip
+# ----- Derive Slug / Version / Tag / ZipPath from this script location -----
+# Folder layout: temp/<Slug>/<version>/<this script>.ps1 + <Slug>-<version>-win.zip
+#
+# Release tag = "<Slug>-<version>"  (e.g. HanmoWesnoth-v0.1.0) so that tags are
+# globally unique across products — two products can both be at v0.1.0 without
+# colliding on the repo-wide release tag namespace.
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $scriptDir = (Resolve-Path $scriptDir).Path
 
-$leaf = Split-Path -Leaf $scriptDir          # e.g. v0.1.0       -> Tag
-$parent = Split-Path -Parent $scriptDir      # e.g. temp/HanmoWesnoth
-$slug = Split-Path -Leaf $parent             # e.g. HanmoWesnoth -> Slug
+$version = Split-Path -Leaf $scriptDir     # e.g. v0.1.0 (plain version)
+$parent = Split-Path -Parent $scriptDir    # e.g. temp/HanmoWesnoth
+$slug = Split-Path -Leaf $parent           # e.g. HanmoWesnoth
 
-$Tag = $leaf
 $Slug = $slug
+$Tag = "$slug-$version"                    # e.g. HanmoWesnoth-v0.1.0 (unique tag)
 
-# Auto-detect the single zip in this folder. Support both patterns:
-#   <Slug>-<Tag>-win.zip  (preferred)  or  any single *.zip as fallback.
+# Auto-detect the single zip in this folder. Preferred name is
+#   <Slug>-<version>-win.zip  (i.e. "$Tag-win.zip")
+# but any single *.zip is accepted as fallback.
 $zips = @(Get-ChildItem -Path $scriptDir -Filter "*.zip" -File)
 if ($zips.Count -eq 0) {
     Write-Host "[ERR] no .zip found in: $scriptDir" -ForegroundColor Red
