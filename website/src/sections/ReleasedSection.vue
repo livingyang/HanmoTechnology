@@ -12,8 +12,8 @@ import ProductCard from '../components/ProductCard.vue'
         name-en="Bro Sanguo"
         badge="● 已上线 Steam"
         tagline="三国题材 · 吸血鬼幸存者类 · 已上线"
-        description="基于 Vue3 + Rapier2D 打造的三国题材吸血鬼幸存者类游戏，已正式登陆 Steam。操控三国武将，在乱世洪流中存活、升级并壮大阵营。"
-        :tags="['Vue3', 'Rapier2D', 'Steam', '幸存者类', '三国']"
+        description="三国题材吸血鬼幸存者类游戏，已正式登陆 Steam。操控三国武将，在乱世洪流中存活、升级并壮大阵营。"
+        :tags="['幸存者类', '三国']"
         :primary-link="{
           label: '在 Steam 查看',
           href: 'https://store.steampowered.com/app/2395660',
