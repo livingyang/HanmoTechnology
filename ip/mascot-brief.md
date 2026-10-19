@@ -108,3 +108,31 @@
 - **样式**：`website/src/style.css` 新增 Hero / About / Navbar / Footer mascot 样式与移动端响应式。
 - **未做**：favicon 未替换（保留品牌 mark，避免 tab 图标辨识度下降）；hover 表情交互为后续可选。
 - **待用户执行**：`cd website && npm run build && cp -r dist/. ../docs/`，再 commit + push 触发 Pages。
+
+## 10. 优化迭代（2026-10-19 第二轮）
+
+### 10.1 资产瘦身（P0）
+- 正稿转 WebP：`mascot-body.webp`（141KB，原 PNG 1.68MB，↓92%），透明底保留。
+- 导航/页脚头像：`mascot-avatar.webp`（6.6KB，头部裁切 240px）。
+- favicon 头图：`mascot-favicon-32/48/180.png`，`index.html` 的 `apple-touch-icon` 已指向 180。
+
+### 10.2 表情库（P1）
+| 文件名 | 表情 | 用途 |
+|---|---|---|
+| mascot-body.webp | 默认 / 呆萌自信 | 主展示 |
+| expressions/mascot-expr-surprised.webp | 惊讶 | Hero hover 随机 |
+| expressions/mascot-expr-heart.webp | 比心 | Hero hover 随机 |
+| expressions/mascot-expr-wave.webp | 挥手 | Hero hover 随机 |
+
+Hero 立绘 hover 随机切换表情（`prefers-reduced-motion` 下关闭动画）。
+
+### 10.3 视觉规范补强（P2）
+- **配色 token**：素白 `#D9D6CE` / 朱红 `#B02A26` / 深棕发 `#3B2A1E` / 肤色 `#F5D5BE` / 紫 accent `#8E6FA8`。
+- **最小留白**：角色四周留白 ≥ 角色高度的 1/4，避免裁切贴边。
+- **禁区**：不改素白/朱红主色比例；不出现写实照片脸；不叠加与「汉末武将」冲突的现代元素；不影射现实政治。
+- **可访问性**：所有 `<img>` 含中文 alt；动画遵守 reduced-motion。
+
+### 10.4 交互（P2）
+- Hero 立绘入场 `hero-rise`（fade + 上移 0.6s）。
+- 立绘持续 `mascot-float` 轻微浮动。
+- hover 切换表情。

@@ -1,6 +1,21 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import SectionTitle from '../components/SectionTitle.vue'
 const baseUrl = import.meta.env.BASE_URL
+
+const defaultImg = `${baseUrl}mascot/mascot-body.webp`
+const expressions = [
+  `${baseUrl}mascot/expressions/mascot-expr-surprised.webp`,
+  `${baseUrl}mascot/expressions/mascot-expr-heart.webp`,
+  `${baseUrl}mascot/expressions/mascot-expr-wave.webp`,
+]
+const mascotSrc = ref(defaultImg)
+function onMascotEnter() {
+  mascotSrc.value = expressions[Math.floor(Math.random() * expressions.length)]
+}
+function onMascotLeave() {
+  mascotSrc.value = defaultImg
+}
 </script>
 
 <template>
@@ -23,8 +38,8 @@ const baseUrl = import.meta.env.BASE_URL
             <a href="#contact" class="btn btn-secondary">联系合作</a>
           </div>
         </div>
-        <div class="hero-mascot">
-          <img :src="`${baseUrl}mascot/mascot-body.png`" alt="子龙哥哥" class="hero-mascot-img" />
+        <div class="hero-mascot" @mouseenter="onMascotEnter" @mouseleave="onMascotLeave">
+          <img :src="mascotSrc" alt="子龙哥哥" class="hero-mascot-img" />
           <p class="hero-mascot-greet">我是子龙哥哥 · 汉末主理人</p>
         </div>
       </div>

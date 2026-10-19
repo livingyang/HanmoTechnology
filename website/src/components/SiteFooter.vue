@@ -7,7 +7,7 @@ const baseUrl = import.meta.env.BASE_URL
   <footer class="site-footer">
     <div class="container site-footer-inner">
       <div class="site-footer-brand">
-        <img :src="`${baseUrl}mascot/mascot-body.png`" alt="子龙哥哥" class="footer-mascot" />
+        <img :src="`${baseUrl}mascot/mascot-avatar.webp`" alt="子龙哥哥" class="footer-mascot" />
         <span>© {{ year }} 深圳市汉末科技有限公司 · Hanmo Technology Co., Ltd.</span>
       </div>
       <div>
