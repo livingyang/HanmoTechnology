@@ -23,7 +23,7 @@ const baseUrl = import.meta.env.BASE_URL
 
       <div class="about-aside">
         <div class="about-mascot-card">
-          <img :src="`${baseUrl}mascot/mascot-body.png`" alt="子龙哥哥" class="about-mascot-img" />
+          <img :src="`${baseUrl}mascot/mascot-body.webp`" alt="子龙哥哥" class="about-mascot-img" />
           <div class="about-mascot-cap">子龙哥哥 · 汉末主理人</div>
           <p class="about-mascot-note">从一行代码到整个三国世界，独立开发者一人包揽策划、程序与美术。</p>
         </div>
