@@ -49,6 +49,7 @@ function go(id: string) {
         <img :src="`${baseUrl}logo.png`" alt="Hanmo" class="logo" />
         <span class="brand-cn">汉末科技</span>
         <span class="brand-en">Hanmo</span>
+        <img :src="`${baseUrl}mascot/mascot-body.png`" alt="子龙哥哥" class="navbar-mascot" />
       </a>
 
       <nav class="navbar-links" aria-label="主导航">

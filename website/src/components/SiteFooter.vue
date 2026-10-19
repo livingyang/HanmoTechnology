@@ -1,12 +1,14 @@
 <script setup lang="ts">
 const year = new Date().getFullYear()
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
   <footer class="site-footer">
     <div class="container site-footer-inner">
-      <div>
-        © {{ year }} 深圳市汉末科技有限公司 · Hanmo Technology Co., Ltd.
+      <div class="site-footer-brand">
+        <img :src="`${baseUrl}mascot/mascot-body.png`" alt="子龙哥哥" class="footer-mascot" />
+        <span>© {{ year }} 深圳市汉末科技有限公司 · Hanmo Technology Co., Ltd.</span>
       </div>
       <div>
         <a href="mailto:hanmotech@agent.qq.com">hanmotech@agent.qq.com</a>

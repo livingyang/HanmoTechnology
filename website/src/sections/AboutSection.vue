@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SectionTitle from '../components/SectionTitle.vue'
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -20,22 +21,29 @@ import SectionTitle from '../components/SectionTitle.vue'
         </p>
       </div>
 
-      <div class="about-stack">
-        <div class="stack-card">
-          <div class="stack-card-title">LOCATION</div>
-          <div class="stack-card-value">深圳 · Shenzhen</div>
+      <div class="about-aside">
+        <div class="about-mascot-card">
+          <img :src="`${baseUrl}mascot/mascot-body.png`" alt="子龙哥哥" class="about-mascot-img" />
+          <div class="about-mascot-cap">子龙哥哥 · 汉末主理人</div>
+          <p class="about-mascot-note">从一行代码到整个三国世界，独立开发者一人包揽策划、程序与美术。</p>
         </div>
-        <div class="stack-card">
-          <div class="stack-card-title">GAME ENGINE</div>
-          <div class="stack-card-value">Unreal Engine 5.8</div>
-        </div>
-        <div class="stack-card">
-          <div class="stack-card-title">SCRIPTING</div>
-          <div class="stack-card-value">TypeScript · Puerts</div>
-        </div>
-        <div class="stack-card">
-          <div class="stack-card-title">FRONTEND</div>
-          <div class="stack-card-value">Vue 3 · Vite</div>
+        <div class="about-stack">
+          <div class="stack-card">
+            <div class="stack-card-title">LOCATION</div>
+            <div class="stack-card-value">深圳 · Shenzhen</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-card-title">GAME ENGINE</div>
+            <div class="stack-card-value">Unreal Engine 5.8</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-card-title">SCRIPTING</div>
+            <div class="stack-card-value">TypeScript · Puerts</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-card-title">FRONTEND</div>
+            <div class="stack-card-value">Vue 3 · Vite</div>
+          </div>
         </div>
       </div>
     </div>
