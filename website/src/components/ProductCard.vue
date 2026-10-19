@@ -5,6 +5,8 @@ defineProps<{
   tagline: string
   description?: string
   tags?: string[]
+  /** 顶部状态徽章，如「● 已上线 Steam」 */
+  badge?: string
   /** 链接按钮配置 */
   primaryLink?: { label: string; href: string; external?: boolean }
   secondaryLink?: { label: string; href: string; external?: boolean }
@@ -13,6 +15,8 @@ defineProps<{
 
 <template>
   <article class="card">
+    <span v-if="badge" class="card-badge">{{ badge }}</span>
+
     <div v-if="nameEn" class="card-tag-row">
       <span class="tag">{{ nameEn }}</span>
     </div>

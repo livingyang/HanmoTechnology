@@ -3,6 +3,7 @@ import NavBar from './components/NavBar.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import HeroSection from './sections/HeroSection.vue'
 import AboutSection from './sections/AboutSection.vue'
+import ReleasedSection from './sections/ReleasedSection.vue'
 import ProductsSection from './sections/ProductsSection.vue'
 import ProjectsSection from './sections/ProjectsSection.vue'
 import PlaySection from './sections/PlaySection.vue'
@@ -15,6 +16,7 @@ import ContactSection from './sections/ContactSection.vue'
     <main class="content">
       <HeroSection />
       <AboutSection />
+      <ReleasedSection />
       <ProductsSection />
       <ProjectsSection />
       <PlaySection />

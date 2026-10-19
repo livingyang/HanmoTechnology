@@ -29,6 +29,7 @@ onBeforeUnmount(() => {
 
 const links = [
   { id: 'about', label: '关于' },
+  { id: 'released', label: '已上线' },
   { id: 'products', label: '产品' },
   { id: 'projects', label: '项目' },
   { id: 'play', label: '试玩' },
